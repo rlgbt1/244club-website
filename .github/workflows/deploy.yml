@@ -19,19 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
       - uses: actions/configure-pages@v5
 
-      - run: npm ci
-      - run: npm run build
-
-      - name: Copy index.html to 404.html for SPA fallback
-        run: cp dist/index.html dist/404.html
+      - name: Build static site
+        run: |
+          mkdir -p dist
+          cp index.html style.css script.js about.html events.html join.html dist/
+          cp -r assets dist/
+          cp public/CNAME dist/
 
       - uses: actions/upload-pages-artifact@v3
         with:

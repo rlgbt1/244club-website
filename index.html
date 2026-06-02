@@ -1,27 +1,273 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="244 Club — A society connecting Angolan students across the United Kingdom. Community, culture, and celebration." />
-  <meta property="og:title" content="244 Club — Angolan Students in the UK" />
-  <meta property="og:description"
-    content="Connecting Angolan students across the UK through community, culture, and celebration." />
-  <meta property="og:type" content="website" />
-  <link rel="icon" type="image/jpeg" href="logo.jpeg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&family=Figtree:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
-    rel="stylesheet" />
-  <title>244 Club — Angolan Students in the UK</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>244 Club — Angola in the UK</title>
+  <meta name="description" content="A curated society for Angolan students and young professionals in the UK. Culture, community, careers."/>
+  <meta property="og:title" content="244 Club"/>
+  <meta property="og:description" content="Where Angolan students and young professionals in the UK find their people."/>
+  <meta property="og:image" content="assets/logo.png"/>
+  <meta property="og:type" content="website"/>
+  <meta name="theme-color" content="#FAF8F3"/>
+  <link rel="icon" type="image/png" href="assets/logo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
 </head>
-
 <body>
-  <div id="root"></div>
-  <script type="module" src="/src/main.tsx"></script>
-</body>
 
+<!-- ═══════════════════════════ NAV ═══════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo.png" alt="244 Club" class="nav-logo-img"/>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="join.html">Join Us</a></li>
+    </ul>
+    <a href="join.html" class="nav-cta">Join the Club</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="events.html">Events</a>
+    <a href="join.html">Join Us</a>
+    <a href="join.html" class="drawer-cta">Join the Club →</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<section class="hero" id="hero">
+
+  <!-- Orbital ring — photos rotate around the logo as you scroll -->
+  <div class="orbs-ring" id="orbsRing" aria-hidden="true">
+    <div class="orb orb-1">
+      <div class="orb-content">
+        <img src="assets/images/img-01.jpg" alt="" loading="eager"/>
+      </div>
+    </div>
+    <div class="orb orb-2">
+      <div class="orb-content">
+        <img src="assets/mckinseyimg2.png" alt="" loading="eager" style="object-position:center center;"/>
+      </div>
+    </div>
+    <div class="orb orb-3">
+      <div class="orb-content">
+        <img src="assets/images/img-06.jpg" alt="" loading="lazy"/>
+      </div>
+    </div>
+    <div class="orb orb-4">
+      <div class="orb-content">
+        <img src="assets/images/img-04.jpg" alt="" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Center content -->
+  <div class="hero-center">
+    <div class="hero-logo-wrap">
+      <img src="assets/logo.png" alt="244 Club" class="hero-logo"/>
+    </div>
+    <p class="hero-eyebrow">244 Club</p>
+    <h1 class="hero-headline">
+      Your home away from<br/><em>home.</em>
+    </h1>
+    <p class="hero-sub">A curated society for Angolan students<br/>and young professionals in the UK.</p>
+    <div class="hero-actions">
+      <a href="join.html" class="btn btn-primary">Become a Member</a>
+      <a href="events.html" class="btn btn-outline">Our Events</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-dot"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ MARQUEE ═══════════════════════════ -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-inner">
+    <div class="marquee-copy">
+      <span>Culture</span><span class="dot">&middot;</span>
+      <span>Community</span><span class="dot">&middot;</span>
+      <span>Career</span><span class="dot">&middot;</span>
+      <span>McKinsey &times; 244</span><span class="dot">&middot;</span>
+      <span>SIP &amp; Connect</span><span class="dot">&middot;</span>
+      <span>Guest Talks</span><span class="dot">&middot;</span>
+      <span>+244</span><span class="dot">&middot;</span>
+      <span>Angola &times; UK</span><span class="dot">&middot;</span>
+      <span>244 Club</span><span class="dot">&middot;</span>
+      <span>AO &times; UK</span><span class="dot">&middot;</span>
+    </div>
+    <div class="marquee-copy" aria-hidden="true">
+      <span>Culture</span><span class="dot">&middot;</span>
+      <span>Community</span><span class="dot">&middot;</span>
+      <span>Career</span><span class="dot">&middot;</span>
+      <span>McKinsey &times; 244</span><span class="dot">&middot;</span>
+      <span>SIP &amp; Connect</span><span class="dot">&middot;</span>
+      <span>Guest Talks</span><span class="dot">&middot;</span>
+      <span>+244</span><span class="dot">&middot;</span>
+      <span>Angola &times; UK</span><span class="dot">&middot;</span>
+      <span>244 Club</span><span class="dot">&middot;</span>
+      <span>AO &times; UK</span><span class="dot">&middot;</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ STATS ═══════════════════════════ -->
+<div class="stats-band">
+  <div class="stats-wrap">
+    <div class="stat-item">
+      <span class="stat-num">150+</span>
+      <span class="stat-label">Members</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">40+</span>
+      <span class="stat-label">Universities across the UK</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">5+</span>
+      <span class="stat-label">Events hosted</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════ WHAT IS 244 ═══════════════════════════ -->
+<section class="what-section" id="what">
+  <div class="what-wrap">
+    <div class="what-left reveal">
+      <span class="label">What is 244 Club?</span>
+      <h2>More than<br/>a dialling code.</h2>
+      <p>244 is Angola's international prefix — the digits Angolans press when calling home from abroad. For us, it's something deeper: a symbol of identity, roots, and the invisible thread that connects us across distance.</p>
+      <p>We built 244 Club for every Angolan student and young professional navigating the UK — so you never have to choose between who you are and who you're becoming.</p>
+      <a href="about.html" class="link-arrow">Read our story &rarr;</a>
+    </div>
+    <div class="what-right reveal">
+      <div class="pillar-block pillar-social">
+        <div class="pillar-num">01</div>
+        <h3>Social &amp; Cultural</h3>
+        <p>Dinners, meetups, cultural gatherings, and community events. Spaces to connect, celebrate, and feel at home.</p>
+      </div>
+      <div class="pillar-block pillar-pro">
+        <div class="pillar-num">02</div>
+        <h3>Professional &amp; Development</h3>
+        <p>Industry talks, networking sessions, and partnerships. From McKinsey evenings to career conversations — we open doors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ EVENTS PREVIEW ═══════════════════════════ -->
+<section class="events-section" id="events-preview">
+  <div class="events-wrap">
+    <div class="events-header reveal">
+      <span class="label">What we've done</span>
+      <h2>Every room<br/>we've entered.</h2>
+    </div>
+    <div class="event-cards">
+      <article class="ecard ecard-flagship reveal">
+        <div class="ecard-badge">Flagship</div>
+        <div class="ecard-date">May 2025</div>
+        <h3>McKinsey &amp; Company</h3>
+        <p>An exclusive evening with McKinsey — industry insight, direct access, and a room that proved what 244 Club can open.</p>
+        <div class="ecard-tag pro flagship">Professional Series</div>
+      </article>
+      <article class="ecard reveal">
+        <div class="ecard-date">May 2025</div>
+        <h3>SIP &amp; Connect</h3>
+        <p>Our signature social — relaxed, curated, and the kind of evening where real connections happen.</p>
+        <div class="ecard-tag social">Social</div>
+      </article>
+      <article class="ecard reveal">
+        <div class="ecard-date">Mar 2025</div>
+        <h3>Guest Talk</h3>
+        <p>Industry professionals sharing candid insights with our members — real stories, real advice.</p>
+        <div class="ecard-tag pro">Professional</div>
+      </article>
+      <article class="ecard reveal">
+        <div class="ecard-date">Mar 2025</div>
+        <h3>Padel Event</h3>
+        <p>Active, fun, and community-first. Because sometimes the best networking happens on the court.</p>
+        <div class="ecard-tag social">Social</div>
+      </article>
+      <article class="ecard reveal">
+        <div class="ecard-date">Early 2025</div>
+        <h3>The First One</h3>
+        <p>Where it all started — our inaugural in-person event that proved the community was real and ready.</p>
+        <div class="ecard-tag social">Founding</div>
+      </article>
+    </div>
+    <div class="events-cta reveal">
+      <a href="events.html" class="btn btn-outline">View All Events</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ JOIN TEASER ═══════════════════════════ -->
+<section class="join-teaser" id="join-teaser">
+  <div class="join-glow" aria-hidden="true"></div>
+  <div class="join-wrap reveal">
+    <span class="label">Ready to join?</span>
+    <h2>Your people<br/>are already here.</h2>
+    <p>Access events, a professional network, cultural community, and a WhatsApp group where things actually happen.</p>
+    <div class="join-actions">
+      <a href="join.html" class="btn btn-primary">Become a Member</a>
+      <a href="about.html" class="btn btn-outline">About 244 Club</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="footer">
+  <div class="footer-wrap">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="assets/WhiteLogo.png" alt="244 Club" class="footer-logo-img"/>
+      </div>
+      <p>Where Angolan students and young<br/>professionals in the UK find their people.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/_club244/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/244club/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@244.club" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.77 1.52V6.75a4.85 4.85 0 0 1-1-.06z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h5>Navigate</h5>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="events.html">Events</a>
+        <a href="join.html">Join Us</a>
+      </div>
+      <div>
+        <h5>Connect</h5>
+        <a href="mailto:club244ao@gmail.com">club244ao@gmail.com</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>&copy; 2025 244 Club</span>
+    <span class="footer-code">+244</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
 </html>
