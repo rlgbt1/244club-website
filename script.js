@@ -33,12 +33,12 @@
     });
   }
 
-  /* ── ORBITAL SCROLL ANIMATION ───────────────── */
-  var ring       = document.getElementById('orbsRing');
+  /* ── ORBITAL + LOGO SCROLL ANIMATION ────────── */
+  var ring        = document.getElementById('orbsRing');
   var orbContents = ring ? ring.querySelectorAll('.orb-content') : [];
-  var hero       = document.getElementById('hero');
-  var currentRot = 0;
-  var targetRot  = 0;
+  var hero        = document.getElementById('hero');
+  var currentRot  = 0;
+  var targetRot   = 0;
 
   function updateOrbitTarget() {
     if (!hero || !ring) return;
@@ -52,10 +52,13 @@
     var diff = targetRot - currentRot;
     if (Math.abs(diff) > 0.02) {
       currentRot += diff * 0.09;
+      /* Orbit ring rotates clockwise */
       ring.style.transform = 'rotate(' + currentRot.toFixed(2) + 'deg)';
+      /* Each orb content counter-rotates so images stay upright */
       orbContents.forEach(function (c) {
         c.style.transform = 'rotate(' + (-currentRot).toFixed(2) + 'deg)';
       });
+      /* Logo orb is inside the ring — it spins automatically with the system */
     }
     requestAnimationFrame(animateRing);
   }
