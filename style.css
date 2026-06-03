@@ -606,28 +606,30 @@ h1 em, h2 em {
 @media (max-width: 540px) {
   :root { --nav-h: 62px; }
 
-  /* All 4 orbs visible on mobile — same corner layout as desktop, scaled down */
+  /* All 4 orbs on mobile. Ring at 45% so bottom orbs land in empty space below buttons */
   .orb-1, .orb-3 { display: block; }
-  .orb { width: 72px; height: 72px; }
-  /* Radius: 120px horizontal, 160px vertical. Translate = (center ± 36px half-size) */
-  .orb-1 { transform: translate(-156px, -196px); }
-  .orb-2 { transform: translate(  84px, -196px); }
-  .orb-3 { transform: translate(-156px,  124px); }
-  .orb-4 { transform: translate(  84px,  124px); }
+  .orbs-ring { top: 45%; }
+  .orb { width: 76px; height: 76px; }
+  /* Top pair: alongside the logo. Bottom pair: alongside "home." — same corner layout as desktop */
+  .orb-1 { transform: translate(-158px, -155px); }
+  .orb-2 { transform: translate(  82px, -155px); }
+  .orb-3 { transform: translate(-158px,   80px); }
+  .orb-4 { transform: translate(  82px,   80px); }
 
-  /* Logo smaller so it matches orb proportions */
+  /* Logo matches orb size */
   .hero-logo-wrap { width: 86px; height: 86px; padding: 10px; margin-bottom: .75rem; }
 
-  /* Headline slightly smaller, buttons side by side like desktop */
-  .hero-headline { font-size: 2.5rem; letter-spacing: -.02em; }
+  /* 3rem gives the natural 3-line wrap: "Your home" / "away from" / "home." */
+  .hero-headline { font-size: 3rem; letter-spacing: -.03em; }
   .hero-sub { font-size: .9rem; margin-bottom: 1.25rem; }
   .hero-actions { flex-direction: row; flex-wrap: wrap; gap: .5rem; }
   .hero-actions .btn { flex: 1 1 130px; justify-content: center; min-width: 0; }
 
   /* Stats — 3 columns, no wrapping, tighter */
   .stats-band { padding: 1.5rem 0; }
-  .stats-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: .25rem; }
+  .stats-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: .25rem; align-items: start; }
   .stat-divider { display: none; }
+  .stat-item { display: flex; flex-direction: column; align-items: center; }
   .stat-num { font-size: 1.9rem; }
   .stat-label { font-size: .68rem; }
 
