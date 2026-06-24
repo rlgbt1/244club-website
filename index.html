@@ -47,39 +47,24 @@
 <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
 <section class="hero" id="hero">
 
-  <!-- 4 orbital photo circles rotate on scroll -->
-  <div class="orbs-ring" id="orbsRing" aria-hidden="true">
-    <div class="orb orb-1">
-      <div class="orb-content">
-        <img src="assets/images/img-01.jpg" alt="" loading="eager"/>
-      </div>
+  <!-- Grouped: orbit ring + headline move together as one unit -->
+  <div class="hero-group">
+    <div class="orbs-ring" id="orbsRing" aria-hidden="true">
+      <div class="orb orb-logo"><div class="orb-content"><img src="assets/logo.png" alt="244 Club" loading="eager"/></div></div>
+      <div class="orb orb-1"><div class="orb-content"><img src="assets/images/img-01.jpg" alt="" loading="eager"/></div></div>
+      <div class="orb orb-2"><div class="orb-content"><img src="assets/mckinseyimg2.png" alt="" loading="eager" style="object-position:center center;"/></div></div>
+      <div class="orb orb-3"><div class="orb-content"><img src="assets/images/img-06.jpg" alt="" loading="lazy"/></div></div>
+      <div class="orb orb-4"><div class="orb-content"><img src="assets/images/img-04.jpg" alt="" loading="lazy"/></div></div>
     </div>
-    <div class="orb orb-2">
-      <div class="orb-content">
-        <img src="assets/mckinseyimg2.png" alt="" loading="eager" style="object-position:center center;"/>
-      </div>
-    </div>
-    <div class="orb orb-3">
-      <div class="orb-content">
-        <img src="assets/images/img-06.jpg" alt="" loading="lazy"/>
-      </div>
-    </div>
-    <div class="orb orb-4">
-      <div class="orb-content">
-        <img src="assets/images/img-04.jpg" alt="" loading="lazy"/>
-      </div>
+    <div class="hero-center">
+      <h1 class="hero-headline">
+        Your home away from<br/><em>home.</em>
+      </h1>
     </div>
   </div>
 
-  <!-- Center content -->
-  <div class="hero-center">
-    <div class="hero-logo-wrap">
-      <img src="assets/logo.png" alt="244 Club" class="hero-logo"/>
-    </div>
-    <p class="hero-eyebrow">244 Club</p>
-    <h1 class="hero-headline">
-      Your home away from<br/><em>home.</em>
-    </h1>
+  <!-- Sub text + CTAs — inside orbit on desktop, below it on mobile -->
+  <div class="hero-text-below">
     <p class="hero-sub">A curated society for Angolan students<br/>and young professionals in the UK.</p>
     <div class="hero-actions">
       <a href="join.html" class="btn btn-primary">Become a Member</a>
