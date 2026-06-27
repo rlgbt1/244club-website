@@ -115,6 +115,22 @@
     });
   }
 
+  /* ── ORBIT SCROLL CONTROL ──────────────────── */
+  var orbsRing     = document.getElementById('orbsRing');
+  var orbContents  = orbsRing ? orbsRing.querySelectorAll('.orb-content') : [];
+  var heroSection  = document.getElementById('hero');
+
+  function updateOrbit() {
+    if (!orbsRing || !heroSection) return;
+    var heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+    var active = window.scrollY > 0 && window.scrollY < heroBottom;
+    var state  = active ? 'running' : 'paused';
+    orbsRing.style.animationPlayState = state;
+    orbContents.forEach(function (c) { c.style.animationPlayState = state; });
+  }
+  window.addEventListener('scroll', updateOrbit, { passive: true });
+  updateOrbit();
+
   /* ── SMOOTH ANCHORS ─────────────────────────── */
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener('click', function (e) {

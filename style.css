@@ -222,6 +222,7 @@ h1 em, h2 em {
   width: 0; height: 0;
   z-index: 2; pointer-events: none;
   animation: orbitSpin 22s linear infinite;
+  animation-play-state: paused;
 }
 @keyframes orbitSpin {
   to { transform: rotate(360deg); }
@@ -240,7 +241,8 @@ h1 em, h2 em {
 }
 .orb-content {
   width: 100%; height: 100%;
-  animation: orbitCounter 22s linear infinite; /* keeps images upright */
+  animation: orbitCounter 22s linear infinite;
+  animation-play-state: paused;
 }
 @keyframes orbitCounter {
   to { transform: rotate(-360deg); }
@@ -251,15 +253,16 @@ h1 em, h2 em {
 .orb-2 img { object-position: center 15%; }
 
 /*
- * 5 orbs on a circle of radius 280px, evenly spaced 72° apart. S = 55px (half of 110px orb).
- * Logo at top (θ=−90°). translate = (R·cosθ − S, R·sinθ − S)
- * −90°=(0,−1) | −18°=(0.951,−0.309) | 54°=(0.588,0.809) | 126°=(−0.588,0.809) | 198°=(−0.951,−0.309)
+ * R=270px. Deliberate layout: 1 top, 2 sides, 2 bottom.
+ * Large orbs (S=55): logo top θ=-90°, right-side θ=-15°, left-side θ=195°
+ * Small orbs (S=42.5): lower-right θ=45°, lower-left θ=135°
+ * translate = (R·cosθ − S, R·sinθ − S)
  */
-.orb-logo { transform: translate(  -55px, -335px); } /* top            */
-.orb-1    { transform: translate(  211px, -142px); } /* upper-right    */
-.orb-2    { transform: translate(  110px,  172px); } /* lower-right    */
-.orb-3    { transform: translate( -220px,  172px); } /* lower-left     */
-.orb-4    { transform: translate( -321px, -142px); } /* upper-left     */
+.orb-logo { transform: translate(  -55px, -325px); } /* top            */
+.orb-1    { transform: translate(  206px, -125px); } /* right side     */
+.orb-4    { transform: translate( -316px, -125px); } /* left side      */
+.orb-2    { transform: translate(  148px,  148px); } /* lower-right    */
+.orb-3    { transform: translate( -233px,  148px); } /* lower-left     */
 
 /* Logo orb: white background, logo contained with padding */
 .orb-logo { background: white; }
@@ -317,7 +320,7 @@ h1 em, h2 em {
 /* Main hero headline — bold Space Grotesk, with serif italic accent */
 .hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(3rem, 9vw, 5.5rem);
+  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
   font-weight: 700;
   line-height: 1.06;
   color: var(--ink);
@@ -346,8 +349,7 @@ h1 em, h2 em {
   z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 6px; opacity: .4;
 }
 .scroll-hint span { font-family: var(--font-body); font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
-.scroll-dot { width: 5px; height: 5px; background: var(--sage); border-radius: 50%; animation: dotPulse 1.8s ease-in-out infinite; }
-@keyframes dotPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.6)} }
+.scroll-dot { width: 5px; height: 5px; background: var(--sage); border-radius: 50%; }
 
 /* ── HERO ENTRANCE ANIMATIONS ────────────────────────────── */
 @keyframes heroFadeUp {
@@ -657,13 +659,13 @@ h1 em, h2 em {
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
 
-  /* R=215px, orb=100px (S=50). Same 72° spacing. */
+  /* R=200px, orb=100px (S=50). top/sides/bottom layout. */
   .orb { width: 100px; height: 100px; }
-  .orb-logo { transform: translate(  -50px, -265px); }
-  .orb-1    { transform: translate(  155px, -116px); }
-  .orb-2    { transform: translate(   76px,  124px); }
-  .orb-3    { transform: translate( -176px,  124px); }
-  .orb-4    { transform: translate( -255px, -116px); }
+  .orb-logo { transform: translate(  -50px, -250px); } /* top        */
+  .orb-1    { transform: translate(  143px, -102px); } /* right side */
+  .orb-4    { transform: translate( -243px, -102px); } /* left side  */
+  .orb-2    { transform: translate(   91px,   91px); } /* lower-right */
+  .orb-3    { transform: translate( -191px,   91px); } /* lower-left  */
 
   .stats-wrap { gap: 2rem; }
   .stat-divider { display: none; }
@@ -690,9 +692,9 @@ h1 em, h2 em {
     position: relative; width: 100%; min-height: 300px;
   }
 
-  .hero-headline { font-size: 2.2rem; letter-spacing: -.03em; }
+  .hero-headline { font-size: 1.9rem; letter-spacing: -.03em; }
 
-  /* R=120px, orb=56px (S=28). Thinner border. */
+  /* R=115px, orb=56px (S=28). top/sides/bottom layout. Thinner border. */
   .orb {
     width: 56px; height: 56px;
     box-shadow:
@@ -700,11 +702,11 @@ h1 em, h2 em {
       0 0 0 2px rgba(255,255,255,.98),
       0 0 0 4px rgba(67,122,80,.5);
   }
-  .orb-logo { transform: translate(  -28px, -148px); }
-  .orb-1    { transform: translate(   86px,  -65px); }
-  .orb-2    { transform: translate(   43px,   69px); }
-  .orb-3    { transform: translate(  -99px,   69px); }
-  .orb-4    { transform: translate( -142px,  -65px); }
+  .orb-logo { transform: translate(  -28px, -143px); } /* top        */
+  .orb-1    { transform: translate(   83px,  -58px); } /* right side */
+  .orb-4    { transform: translate( -139px,  -58px); } /* left side  */
+  .orb-2    { transform: translate(   53px,   53px); } /* lower-right */
+  .orb-3    { transform: translate( -109px,   53px); } /* lower-left  */
 
   .hero-sub { font-size: .9rem; margin-bottom: 1.25rem; }
   .hero-actions { flex-direction: row; flex-wrap: wrap; gap: .5rem; }
