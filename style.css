@@ -373,6 +373,60 @@ h1 em, h2 em {
 
 /* Orbs entrance — opacity only so the translate positions are preserved */
 
+/* ── HERO DECORATIVE BACKGROUND LAYER ────────────────────── */
+.hero-deco {
+  position: absolute; inset: 0;
+  z-index: 0; pointer-events: none; overflow: hidden;
+}
+
+/* Dot grid — masked out at center so it frames the hero without crowding content */
+.hero-deco-grid {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(67,122,80,.12) 1px, transparent 1px);
+  background-size: 34px 34px;
+  -webkit-mask-image: radial-gradient(ellipse 92% 90% at 50% 50%, transparent 24%, black 68%);
+  mask-image: radial-gradient(ellipse 92% 90% at 50% 50%, transparent 24%, black 68%);
+}
+
+/* Top-left concentric arcs — pure CSS, no SVG needed */
+.hero-deco-arc-tl {
+  position: absolute; top: -120px; left: -120px;
+  width: 360px; height: 360px;
+  border: 1.5px solid rgba(67,122,80,.1); border-radius: 50%;
+}
+.hero-deco-arc-tl::before {
+  content: ''; position: absolute; inset: 52px;
+  border: 1px solid rgba(67,122,80,.07); border-radius: 50%;
+}
+.hero-deco-arc-tl::after {
+  content: ''; position: absolute; inset: 98px;
+  border: 1px solid rgba(67,122,80,.045); border-radius: 50%;
+}
+
+/* Bottom-right concentric arcs — Angola color accent on inner rings */
+.hero-deco-arc-br {
+  position: absolute; bottom: -120px; right: -120px;
+  width: 340px; height: 340px;
+  border: 1.5px solid rgba(67,122,80,.08); border-radius: 50%;
+}
+.hero-deco-arc-br::before {
+  content: ''; position: absolute; inset: 50px;
+  border: 1px solid rgba(204,0,0,.06); border-radius: 50%;
+}
+.hero-deco-arc-br::after {
+  content: ''; position: absolute; inset: 94px;
+  border: 1px solid rgba(255,191,0,.045); border-radius: 50%;
+}
+
+/* Ghost "+244" — large typographic watermark, bottom-right */
+.hero-deco-ghost {
+  position: absolute; bottom: 5%; right: 0;
+  font-family: var(--font-display); font-size: clamp(5rem, 13vw, 12rem);
+  font-weight: 900; line-height: 1; letter-spacing: -.04em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(67,122,80,.065);
+  user-select: none;
+}
+
 /* ── MARQUEE STRIP ───────────────────────────────────────── */
 .marquee-strip { background: var(--forest); overflow: hidden; padding: .85rem 0; position: relative; z-index: 10; }
 .marquee-inner { display: flex; width: fit-content; animation: marquee 32s linear infinite; will-change: transform; }
@@ -382,13 +436,31 @@ h1 em, h2 em {
 @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
 /* ── STATS BAND ──────────────────────────────────────────── */
-.stats-band { background: var(--cream); padding: 3.5rem 0; border-bottom: 1px solid var(--stone); }
+.stats-band {
+  background: var(--cream); padding: 3.5rem 0;
+  border-bottom: 1px solid var(--stone);
+  position: relative; overflow: hidden;
+}
+.stats-band::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(67,122,80,.08) 1px, transparent 1px);
+  background-size: 28px 28px; pointer-events: none;
+}
 .stats-wrap {
   max-width: var(--max-w); margin: 0 auto; padding: 0 1.25rem;
   display: flex; align-items: center; justify-content: center;
-  gap: 4rem; flex-wrap: wrap;
+  gap: 3rem; flex-wrap: wrap;
+  position: relative; z-index: 1;
 }
-.stat-item { text-align: center; }
+.stat-item {
+  text-align: center;
+  background: rgba(250,248,243,.8);
+  border: 1px solid rgba(255,255,255,.9);
+  border-radius: var(--r-md);
+  padding: 1.5rem 2.5rem;
+  box-shadow: 0 2px 18px rgba(28,51,32,.06), inset 0 1px 0 rgba(255,255,255,.95);
+  min-width: 130px;
+}
 .stat-num {
   display: block;
   font-family: var(--font-display);
@@ -420,8 +492,8 @@ h1 em, h2 em {
 .pillar-block::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; border-radius: 3px 0 0 3px; }
 .pillar-social::before { background: var(--sage); }
 .pillar-pro::before    { background: var(--forest); }
-.pillar-block:hover { border-color: var(--sage-light); box-shadow: 0 4px 24px rgba(28,51,32,.07); transform: translateY(-2px); }
-.pillar-num { font-family: var(--font-body); font-size: 1.8rem; font-weight: 800; color: var(--stone); line-height: 1; margin-bottom: .5rem; }
+.pillar-block:hover { border-color: var(--sage-light); background: var(--sage-faint); box-shadow: 0 8px 32px rgba(28,51,32,.09); transform: translateY(-3px); }
+.pillar-num { font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 900; color: var(--stone); line-height: 1; letter-spacing: -.04em; margin-bottom: .5rem; }
 .pillar-block h3 { font-family: var(--font-body); font-size: 1rem; font-weight: 600; color: var(--ink); margin-bottom: .4rem; }
 .pillar-block p { font-size: .875rem; color: var(--muted); line-height: 1.65; }
 
@@ -432,8 +504,12 @@ h1 em, h2 em {
 .events-header h2 { margin-top: .5rem; }
 .event-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
 
-.ecard { background: var(--white); border: 1px solid var(--stone); border-radius: var(--r-lg); padding: 1.5rem; transition: all .25s var(--ease); }
-.ecard:hover { border-color: var(--sage-light); box-shadow: 0 6px 28px rgba(28,51,32,.08); transform: translateY(-3px); }
+.ecard { background: var(--white); border: 1px solid var(--stone); border-top: 3px solid var(--stone); border-radius: var(--r-lg); padding: 1.5rem; transition: all .25s var(--ease); }
+.ecard:hover { border-color: var(--sage-light); border-top-color: inherit; box-shadow: 0 8px 32px rgba(28,51,32,.1); transform: translateY(-4px); }
+
+/* Colored top accent per event type — :has() has 95%+ browser support */
+.ecard:not(.ecard-flagship):has(.ecard-tag.pro)    { border-top-color: var(--forest); }
+.ecard:not(.ecard-flagship):has(.ecard-tag.social) { border-top-color: var(--sage); }
 
 /* Flagship — dark green card, clear white text */
 .ecard-flagship {
@@ -493,7 +569,12 @@ h1 em, h2 em {
 
 /* ── JOIN TEASER ─────────────────────────────────────────── */
 .join-teaser { padding: 7rem 0; background: var(--white); position: relative; overflow: hidden; text-align: center; }
-.join-glow { position: absolute; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(67,122,80,.1) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
+.join-teaser::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, rgba(67,122,80,.065) 1px, transparent 1px);
+  background-size: 32px 32px; pointer-events: none;
+}
+.join-glow { position: absolute; width: 900px; height: 700px; border-radius: 50%; background: radial-gradient(ellipse, rgba(67,122,80,.14) 0%, transparent 62%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
 .join-wrap { max-width: 560px; margin: 0 auto; padding: 0 1.25rem; position: relative; z-index: 1; }
 .join-wrap h2 { margin-bottom: 1rem; }
 .join-wrap p { font-size: 1rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; }
@@ -667,7 +748,8 @@ h1 em, h2 em {
   .orb-2    { transform: translate(   91px,   91px); } /* lower-right */
   .orb-3    { transform: translate( -191px,   91px); } /* lower-left  */
 
-  .stats-wrap { gap: 2rem; }
+  .stats-wrap { gap: 1.5rem; }
+  .stat-item { padding: 1.25rem 1.75rem; }
   .stat-divider { display: none; }
   .what-wrap { grid-template-columns: 1fr; gap: 2.5rem; }
   .what-right { padding-top: 0; }
@@ -716,9 +798,14 @@ h1 em, h2 em {
   .stats-band { padding: 1.5rem 0; }
   .stats-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: .25rem; align-items: start; }
   .stat-divider { display: none; }
-  .stat-item { display: flex; flex-direction: column; align-items: center; }
+  .stat-item { display: flex; flex-direction: column; align-items: center; padding: .75rem .35rem; min-width: 0; }
   .stat-num { font-size: 1.9rem; }
   .stat-label { font-size: .68rem; }
+
+  /* Hero deco — hide ghost text + shrink arcs on mobile */
+  .hero-deco-ghost { display: none; }
+  .hero-deco-arc-tl { width: 200px; height: 200px; top: -70px; left: -70px; }
+  .hero-deco-arc-br { width: 190px; height: 190px; bottom: -70px; right: -70px; }
 
   /* Kill the giant gaps between sections */
   .what-section { padding: 2.5rem 0; }
