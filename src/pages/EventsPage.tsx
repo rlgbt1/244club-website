@@ -1,148 +1,91 @@
-import SectionLabel from '../components/SectionLabel'
-import Card from '../components/Card'
-import Button from '../components/Button'
-import MarkdownRenderer from '../components/MarkdownRenderer'
-import eventsContent from '../../pages/events.md?raw'
-
-interface EventData {
-  title: string
-  date: string
-  location: string
-  description: string
-  variant: 'white' | 'red' | 'yellow' | 'mint' | 'purple' | 'dark' | 'green'
-  past?: boolean
-}
-
-const events: EventData[] = [
-  {
-    title: 'SUMMER SOCIAL 2026',
-    date: 'JUN 2026',
-    location: 'London, UK',
-    description: 'Kick off the summer with the 244 family. Music, food, and good vibes — Angolan style. Open to all members and friends.',
-    variant: 'red',
-  },
-  {
-    title: 'NETWORKING MIXER',
-    date: 'JUL 2026',
-    location: 'Birmingham, UK',
-    description: 'Connect with Angolan professionals working in the UK. Career advice, mentorship opportunities, and real conversations.',
-    variant: 'yellow',
-  },
-  {
-    title: 'CULTURAL FILM NIGHT',
-    date: 'AUG 2026',
-    location: 'Online',
-    description: 'A screening of acclaimed Angolan cinema followed by discussion. Celebrating our stories, our voices, our art.',
-    variant: 'mint',
-  },
-  {
-    title: 'ANGOLAN INDEPENDENCE DAY',
-    date: 'NOV 2026',
-    location: 'London, UK',
-    description: 'Our flagship event. Celebrating 51 years of Angolan independence with music, dance, food, and community.',
-    variant: 'purple',
-  },
-  {
-    title: 'WELCOME FRESHERS MEET',
-    date: 'OCT 2025',
-    location: 'London, UK',
-    description: 'Our inaugural event welcoming new Angolan students arriving in the UK for the 2025/26 academic year.',
-    variant: 'white',
-    past: true,
-  },
-  {
-    title: 'STUDY JAM',
-    date: 'DEC 2025',
-    location: 'Manchester, UK',
-    description: 'Exam season study session with fellow 244 members. Shared focus, shared snacks, shared success.',
-    variant: 'white',
-    past: true,
-  },
-]
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { useT } from '../i18n'
+import { useScrollReveal } from '../hooks/useScrollReveal'
 
 export default function EventsPage() {
-  const upcoming = events.filter(e => !e.past)
-  const past = events.filter(e => e.past)
+  const t = useT()
+  const e = t.events
+  const [lightboxSrc, setLightboxSrc] = useState('')
+  useScrollReveal()
+
+  useEffect(() => {
+    document.querySelectorAll<HTMLElement>('.gallery-item').forEach(item => {
+      item.style.cursor = 'zoom-in'
+    })
+  }, [])
+
+  const gallery = [
+    '/assets/images/img-01.jpg', '/assets/images/img-02.jpg', '/assets/images/img-03.jpg',
+    '/assets/images/img-05.jpg', '/assets/images/img-06.jpg', '/assets/images/img-07.jpg',
+    '/assets/images/img-08.jpg', '/assets/images/img-09.jpg', '/assets/images/img-04.jpg',
+  ]
 
   return (
-    <div className="page page-enter">
-      <div className="container">
-        {/* Header */}
-        <section className="hero">
-          <SectionLabel>Events</SectionLabel>
-          <h1 className="hero-title animate-in">
-            WHAT'S <span className="accent">HAPPENING</span>.
-          </h1>
-          <p className="hero-subtitle animate-in animate-delay-1">
-            From cultural celebrations to professional networking — our events bring the Angolan community together across the UK.
-          </p>
-        </section>
-
-        {/* Upcoming Events */}
-        <section className="mb-3xl">
-          <SectionLabel>Upcoming</SectionLabel>
-          <h2 className="mb-xl">COMING SOON.</h2>
-          <div className="bento-grid bento-grid-events">
-            {upcoming.map((event, i) => (
-              <Card
-                key={event.title}
-                variant={event.variant}
-                className={`event-card animate-in animate-delay-${Math.min(i + 1, 5)}`}
-              >
-                <div className="event-date">{event.date}</div>
-                <div className="event-title">{event.title}</div>
-                <p className="event-description">{event.description}</p>
-                <div className="event-location">📍 {event.location}</div>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="mb-3xl">
-          <Card variant="dark">
-            <div className="flex items-center justify-between" style={{ flexWrap: 'wrap', gap: 'var(--space-lg)' }}>
-              <div>
-                <SectionLabel>Stay Updated</SectionLabel>
-                <h2 style={{ marginBottom: 'var(--space-sm)' }}>DON'T MISS OUT.</h2>
-                <p style={{ opacity: 0.7, maxWidth: '480px' }}>
-                  Follow us on Instagram for event announcements, behind-the-scenes content, and community updates.
-                </p>
-              </div>
-              <Button variant="accent" size="large" href="https://www.instagram.com/244clubuk/">
-                FOLLOW US →
-              </Button>
-            </div>
-          </Card>
-        </section>
-
-        {/* Past Events */}
-        {past.length > 0 && (
-          <section className="mb-3xl">
-            <SectionLabel>Past Events</SectionLabel>
-            <h2 className="mb-xl">WHAT WE'VE DONE.</h2>
-            <div className="bento-grid bento-grid-events">
-              {past.map((event, i) => (
-                <Card
-                  key={event.title}
-                  variant={event.variant}
-                  className={`event-card event-past animate-in animate-delay-${Math.min(i + 1, 5)}`}
-                >
-                  <div className="event-date">{event.date}</div>
-                  <div className="event-title">{event.title}</div>
-                  <p className="event-description">{event.description}</p>
-                  <div className="event-location">📍 {event.location}</div>
-                </Card>
-              ))}
-            </div>
-          </section>
-        )}
-
-        {/* Markdown Content */}
-        <section>
-          <MarkdownRenderer content={eventsContent} />
-        </section>
+    <>
+      <div className="page-hero reveal">
+        <span className="label">{e.label}</span>
+        <h1>{e.h1Lines[0]}<br />{e.h1Lines[1]}</h1>
+        <p>{e.intro}</p>
       </div>
-    </div>
+
+      <div className="events-page">
+
+        <article className="ecard ecard-flagship reveal" style={{ marginBottom: '1rem' }}>
+          <div className="ecard-badge">Flagship</div>
+          <div className="ecard-date">{e.flagship.date}</div>
+          <h3>{e.flagship.title}</h3>
+          <p>{e.flagship.desc}</p>
+          <div className="ecard-tag pro flagship">{e.flagship.tag}</div>
+        </article>
+
+        <div className="events-full-grid">
+          {e.cards.map((card, i) => (
+            <article key={i} className="ecard reveal">
+              <div className="ecard-date">{card.date}</div>
+              <h3>{card.title}</h3>
+              <p>{card.desc}</p>
+              <div className={`ecard-tag ${card.tagClass}`}>{card.tag}</div>
+            </article>
+          ))}
+
+          <article className="ecard reveal" style={{ border: '2px solid var(--forest-light)', background: 'var(--sage-faint)' }}>
+            <div className="ecard-date">{e.nextDate}</div>
+            <h3 style={{ color: 'var(--forest)', fontWeight: 700 }}>{e.nextTitle}</h3>
+            <p>{e.nextDesc}</p>
+            <Link to="/join" style={{ fontSize: '.875rem', fontFamily: 'var(--font-display)', fontStyle: 'italic', fontWeight: 400, color: 'var(--forest)', display: 'inline-flex', alignItems: 'center', gap: '4px', marginTop: '.5rem', transition: 'gap .2s' }}>
+              {e.nextLink}
+            </Link>
+          </article>
+        </div>
+
+        <div className="gallery-section" style={{ padding: '3rem 0 0' }} id="gallery">
+          <span className="label">{e.galleryLabel}</span>
+          <div className="gallery-grid reveal">
+            {gallery.map((src, i) => (
+              <div key={i} className="gallery-item" style={{ cursor: 'zoom-in' }} onClick={() => setLightboxSrc(src)}>
+                <img src={src} alt="244 Club event" loading="lazy" />
+              </div>
+            ))}
+            <div
+              className="gallery-item"
+              style={{ gridColumn: 'span 3', aspectRatio: '3/1', cursor: 'zoom-in' }}
+              onClick={() => setLightboxSrc('/assets/1.PNG')}
+            >
+              <img src="/assets/1.PNG" alt="244 Club Padel Day" loading="lazy" style={{ objectPosition: 'center 40%' }} />
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Lightbox */}
+      {lightboxSrc && (
+        <div id="lightbox" className="open" onClick={() => setLightboxSrc('')} style={{ display: 'flex' }}>
+          <button id="lightbox-close" aria-label="Close" onClick={() => setLightboxSrc('')}>&times;</button>
+          <img src={lightboxSrc} alt="Enlarged photo" onClick={e => e.stopPropagation()} />
+        </div>
+      )}
+    </>
   )
 }
