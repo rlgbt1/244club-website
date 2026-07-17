@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
+import { type PointerEvent as ReactPointerEvent } from 'react'
 import { useT } from '../i18n'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useOrbitScroll } from '../hooks/useOrbitScroll'
+import { asset } from '../utils/asset'
+import { ConnectionGlobe } from '../components/ConnectionGlobe'
 
 export default function HomePage() {
   const t = useT()
@@ -9,10 +12,31 @@ export default function HomePage() {
   useScrollReveal()
   useOrbitScroll()
 
+  const HOME_CARD_IMAGES: (string | string[])[] = [
+    asset('/assets/images/mckinsey1.jpg'),
+    asset('/assets/images/sipconnect1.jpg'),
+    asset('/assets/images/miguecarneiro1.jpg'),
+    asset('/assets/images/padel.jpg'),
+    asset('/assets/images/firstevent.jpg'),
+  ]
+
   const marqueeItems = h.marquee.flatMap((item, i) => [
     <span key={`i${i}`}>{item}</span>,
     <span key={`d${i}`} className="dot">&middot;</span>,
   ])
+
+  const handleCardGlare = (event: ReactPointerEvent<HTMLElement>) => {
+    if (event.pointerType === 'touch') return
+    const card = event.currentTarget
+    const bounds = card.getBoundingClientRect()
+    card.style.setProperty('--glare-x', `${((event.clientX - bounds.left) / bounds.width) * 100}%`)
+    card.style.setProperty('--glare-y', `${((event.clientY - bounds.top) / bounds.height) * 100}%`)
+    card.style.setProperty('--glare-opacity', '1')
+  }
+
+  const clearCardGlare = (event: ReactPointerEvent<HTMLElement>) => {
+    event.currentTarget.style.setProperty('--glare-opacity', '0')
+  }
 
   return (
     <>
@@ -20,11 +44,11 @@ export default function HomePage() {
       <section className="hero" id="hero">
         <div className="hero-group">
           <div className="orbs-ring" id="orbsRing" aria-hidden="true">
-            <div className="orb orb-logo"><div className="orb-content"><img src="/assets/logo.png" alt="244 Club" loading="eager"/></div></div>
-            <div className="orb orb-1"><div className="orb-content"><img src="/assets/images/img-01.jpg" alt="" loading="eager"/></div></div>
-            <div className="orb orb-2"><div className="orb-content"><img src="/assets/mckinseyimg2.png" alt="" loading="eager" style={{objectPosition:'center center'}}/></div></div>
-            <div className="orb orb-3"><div className="orb-content"><img src="/assets/images/img-06.jpg" alt="" loading="lazy"/></div></div>
-            <div className="orb orb-4"><div className="orb-content"><img src="/assets/images/img-04.jpg" alt="" loading="lazy"/></div></div>
+            <div className="orb orb-logo"><div className="orb-content"><img src={asset('/assets/logo.png')} alt="244 Club" loading="eager"/></div></div>
+            <div className="orb orb-1"><div className="orb-content"><img src={asset('/assets/images/img-01.jpg')} alt="" loading="eager"/></div></div>
+            <div className="orb orb-2"><div className="orb-content"><img src={asset('/assets/mckinseyimg2.png')} alt="" loading="eager" style={{objectPosition:'center center'}}/></div></div>
+            <div className="orb orb-3"><div className="orb-content"><img src={asset('/assets/images/img-06.jpg')} alt="" loading="lazy"/></div></div>
+            <div className="orb orb-4"><div className="orb-content"><img src={asset('/assets/images/img-04.jpg')} alt="" loading="lazy"/></div></div>
           </div>
           <div className="hero-center">
             <h1 className="hero-headline">
@@ -98,6 +122,21 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* DIASPORA CONNECTION */}
+      <section className="connection-section">
+        <div className="connection-wrap">
+          <div className="connection-copy reveal">
+            <span className="label">{h.connectionLabel}</span>
+            <h2>{h.connectionH2[0]} <em>{h.connectionH2[1]}</em></h2>
+            <p>{h.connectionP}</p>
+            <Link to="/join" className="link-arrow connection-link">{h.connectionLink}</Link>
+          </div>
+          <div className="connection-globe reveal">
+            <ConnectionGlobe />
+          </div>
+        </div>
+      </section>
+
       {/* EVENTS PREVIEW */}
       <section className="events-section" id="events-preview">
         <div className="events-wrap">
@@ -111,12 +150,36 @@ export default function HomePage() {
           </div>
           <div className="event-cards">
             {h.cards.map((card, i) => (
-              <article key={i} className={`ecard${card.flagship ? ' ecard-flagship' : ''} reveal`}>
-                {card.flagship && <div className="ecard-badge">Flagship</div>}
-                <div className="ecard-date">{card.date}</div>
-                <h3>{card.title}</h3>
-                <p>{card.desc}</p>
-                <div className={`ecard-tag ${card.tagClass}`}>{card.tag}</div>
+              <article
+                key={i}
+                className={`ecard glare-card${card.flagship ? ' ecard-flagship' : ''} reveal`}
+                onPointerMove={handleCardGlare}
+                onPointerLeave={clearCardGlare}
+              >
+                {card.flagship ? (
+                  <>
+                    <div className="ecard-flagship-img">
+                      <img src={HOME_CARD_IMAGES[i] as string} alt={card.title} loading="lazy" />
+                    </div>
+                    <div className="ecard-flagship-body">
+                      <div className="ecard-badge">Flagship</div>
+                      <div className="ecard-date">{card.date}</div>
+                      <h3>{card.title}</h3>
+                      <p>{card.desc}</p>
+                      <div className={`ecard-tag ${card.tagClass}`}>{card.tag}</div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="ecard-img">
+                      <img src={HOME_CARD_IMAGES[i] as string} alt={card.title} loading="lazy" />
+                    </div>
+                    <div className="ecard-date">{card.date}</div>
+                    <h3>{card.title}</h3>
+                    <p>{card.desc}</p>
+                    <div className={`ecard-tag ${card.tagClass}`}>{card.tag}</div>
+                  </>
+                )}
               </article>
             ))}
           </div>

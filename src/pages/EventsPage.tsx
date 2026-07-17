@@ -2,6 +2,18 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useT } from '../i18n'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { asset } from '../utils/asset'
+
+const CARD_IMAGES: (string | string[])[] = [
+  asset('/assets/images/sipconnect1.jpg'),
+  [
+    asset('/assets/images/luisacarlos1.jpg'),
+    asset('/assets/images/miguecarneiro1.jpg'),
+    asset('/assets/images/miguecarneiro2.jpg'),
+  ],
+  asset('/assets/images/padel.jpg'),
+  asset('/assets/images/firstevent.jpg'),
+]
 
 export default function EventsPage() {
   const t = useT()
@@ -19,7 +31,7 @@ export default function EventsPage() {
     '/assets/images/img-01.jpg', '/assets/images/img-02.jpg', '/assets/images/img-03.jpg',
     '/assets/images/img-05.jpg', '/assets/images/img-06.jpg', '/assets/images/img-07.jpg',
     '/assets/images/img-08.jpg', '/assets/images/img-09.jpg', '/assets/images/img-04.jpg',
-  ]
+  ].map(asset)
 
   return (
     <>
@@ -32,16 +44,34 @@ export default function EventsPage() {
       <div className="events-page">
 
         <article className="ecard ecard-flagship reveal" style={{ marginBottom: '1rem' }}>
-          <div className="ecard-badge">Flagship</div>
-          <div className="ecard-date">{e.flagship.date}</div>
-          <h3>{e.flagship.title}</h3>
-          <p>{e.flagship.desc}</p>
-          <div className="ecard-tag pro flagship">{e.flagship.tag}</div>
+          <div className="ecard-flagship-img">
+            <img src={asset('/assets/images/mckinsey1.jpg')} alt="McKinsey × 244 Club" loading="lazy" />
+          </div>
+          <div className="ecard-flagship-body">
+            <div className="ecard-badge">Flagship</div>
+            <div className="ecard-date">{e.flagship.date}</div>
+            <h3>{e.flagship.title}</h3>
+            <p>{e.flagship.desc}</p>
+            <div className="ecard-tag pro flagship">{e.flagship.tag}</div>
+          </div>
         </article>
 
         <div className="events-full-grid">
           {e.cards.map((card, i) => (
             <article key={i} className="ecard reveal">
+              {Array.isArray(CARD_IMAGES[i]) ? (
+                <div className="ecard-gallery">
+                  {(CARD_IMAGES[i] as string[]).map((src, j) => (
+                    <div key={j} className="ecard-gallery-item">
+                      <img src={src} alt={card.title} loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              ) : CARD_IMAGES[i] ? (
+                <div className="ecard-img">
+                  <img src={CARD_IMAGES[i] as string} alt={card.title} loading="lazy" />
+                </div>
+              ) : null}
               <div className="ecard-date">{card.date}</div>
               <h3>{card.title}</h3>
               <p>{card.desc}</p>
@@ -70,9 +100,9 @@ export default function EventsPage() {
             <div
               className="gallery-item"
               style={{ gridColumn: 'span 3', aspectRatio: '3/1', cursor: 'zoom-in' }}
-              onClick={() => setLightboxSrc('/assets/1.PNG')}
+              onClick={() => setLightboxSrc(asset('/assets/1.PNG'))}
             >
-              <img src="/assets/1.PNG" alt="244 Club Padel Day" loading="lazy" style={{ objectPosition: 'center 40%' }} />
+              <img src={asset('/assets/1.PNG')} alt="244 Club Padel Day" loading="lazy" style={{ objectPosition: 'center 40%' }} />
             </div>
           </div>
         </div>

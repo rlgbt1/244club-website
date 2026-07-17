@@ -1,12 +1,24 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useLang } from '../context/LanguageContext'
 import { useT } from '../i18n'
+import { asset } from '../utils/asset'
+
+const FLAGS: Record<string, string> = {
+  en: '/assets/United-kingdom_flag_icon_round.svg.png',
+  pt: '/assets/flag-round-250.png',
+}
+const LANG_LABELS: Record<string, string> = {
+  en: 'English',
+  pt: 'Português',
+}
 
 export default function Navbar() {
   const location = useLocation()
   const [scrolled, setScrolled] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [langOpen, setLangOpen] = useState(false)
+  const langRef = useRef<HTMLDivElement>(null)
   const { lang, setLang } = useLang()
   const t = useT()
 
@@ -17,8 +29,18 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Close drawer on route change
   useEffect(() => { setDrawerOpen(false) }, [location.pathname])
+
+  useEffect(() => {
+    if (!langOpen) return
+    const close = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', close)
+    return () => document.removeEventListener('mousedown', close)
+  }, [langOpen])
 
   const isActive = (path: string) =>
     path === '/' ? location.pathname === '/' : location.pathname.startsWith(path)
@@ -35,7 +57,7 @@ export default function Navbar() {
       <nav className={`nav${scrolled ? ' scrolled' : ''}`} id="nav">
         <div className="nav-wrap">
           <Link to="/" className="nav-logo">
-            <img src="/assets/logo.png" alt="244 Club" className="nav-logo-img" />
+            <img src={asset('/assets/logo.png')} alt="244 Club" className="nav-logo-img" />
           </Link>
 
           <ul className="nav-links">
@@ -46,24 +68,35 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* Language toggle */}
-          <div className="lang-toggle" role="group" aria-label="Language">
+          {/* Language dropdown */}
+          <div className="lang-dropdown" ref={langRef}>
             <button
-              className={`lang-btn${lang === 'en' ? ' lang-active' : ''}`}
-              onClick={() => setLang('en')}
-              aria-label="English"
-              title="English"
+              className="lang-trigger"
+              onClick={() => setLangOpen(o => !o)}
+              aria-label="Select language"
+              aria-expanded={langOpen}
             >
-              <img src="/assets/United-kingdom_flag_icon_round.svg.png" alt="UK flag" />
+              <img src={asset(FLAGS[lang])} alt={LANG_LABELS[lang]} />
+              <svg className={`lang-chevron${langOpen ? ' open' : ''}`} width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 4l4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </button>
-            <button
-              className={`lang-btn${lang === 'pt' ? ' lang-active' : ''}`}
-              onClick={() => setLang('pt')}
-              aria-label="Português"
-              title="Português"
-            >
-              <img src="/assets/flag-round-250.png" alt="Portugal flag" />
-            </button>
+            {langOpen && (
+              <div className="lang-menu" role="listbox">
+                {(['pt', 'en'] as const).map(l => (
+                  <button
+                    key={l}
+                    className={`lang-option${lang === l ? ' selected' : ''}`}
+                    role="option"
+                    aria-selected={lang === l}
+                    onClick={() => { setLang(l); setLangOpen(false) }}
+                  >
+                    <img src={asset(FLAGS[l])} alt="" />
+                    <span>{LANG_LABELS[l]}</span>
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           <Link to="/join" className="nav-cta">{t.nav.cta}</Link>

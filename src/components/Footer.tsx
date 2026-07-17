@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useT } from '../i18n'
+import { asset } from '../utils/asset'
 
 const IgIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -28,7 +29,7 @@ export default function Footer() {
       <div className="footer-wrap">
         <div className="footer-brand">
           <div className="footer-logo">
-            <img src="/assets/WhiteLogo.png" alt="244 Club" className="footer-logo-img" />
+            <img src={asset('/assets/WhiteLogo.png')} alt="244 Club" className="footer-logo-img" />
           </div>
           <p>{lines[0]}<br/>{lines[1]}</p>
           <div className="footer-socials">

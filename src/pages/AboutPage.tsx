@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useT } from '../i18n'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { asset } from '../utils/asset'
 
 export default function AboutPage() {
   const t = useT()
@@ -10,15 +11,20 @@ export default function AboutPage() {
   return (
     <>
       <div className="page-hero page-hero-split reveal">
+        <div className="page-hero-logo about-logo-desktop">
+          <img src={asset('/assets/logo.png')} alt="244 Club logo" />
+        </div>
         <div className="page-hero-text">
           <span className="label">{a.label}</span>
-          <h1>
-            {a.h1Lines[0]}<br />{a.h1Lines[1]}<br /><em>{a.h1Em}</em>
-          </h1>
+          <div className="about-hero-row">
+            <h1>
+              {a.h1Lines[0]}<br />{a.h1Lines[1]}<br /><em>{a.h1Em}</em>
+            </h1>
+            <div className="about-logo-mobile">
+              <img src={asset('/assets/logo.png')} alt="244 Club logo" />
+            </div>
+          </div>
           <p>{a.heroP}</p>
-        </div>
-        <div className="page-hero-logo">
-          <img src="/assets/logo.png" alt="244 Club logo" />
         </div>
       </div>
 
@@ -61,7 +67,7 @@ export default function AboutPage() {
             {a.team.map(member => (
               <div key={member.name} className="team-card">
                 <div className="team-img-wrap">
-                  <img src={member.img} alt={member.name} style={{ objectPosition: member.pos }} />
+                  <img src={asset(member.img)} alt={member.name} style={{ objectPosition: member.pos }} />
                 </div>
                 <h4>{member.name}</h4>
                 <p className="team-role">{member.role}</p>
