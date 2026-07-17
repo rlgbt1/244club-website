@@ -5,6 +5,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { useOrbitScroll } from '../hooks/useOrbitScroll'
 import { asset } from '../utils/asset'
 import { ConnectionGlobe } from '../components/ConnectionGlobe'
+import { ContainerTextFlip } from '../components/ContainerTextFlip'
 
 export default function HomePage() {
   const t = useT()
@@ -144,8 +145,8 @@ export default function HomePage() {
             <span className="label">{h.eventsLabel}</span>
             <h2>
               {h.eventsH2a}{' '}
-              <span style={{background:'var(--forest-light)',color:'var(--ivory)',padding:'.02em .18em .06em',borderRadius:'5px'}}>{h.eventsH2room}</span>
-              <br/>{h.eventsH2b}
+              <span className="events-room-word">{h.eventsH2room}</span>
+              <br/>{h.eventsH2b}{' '}<ContainerTextFlip words={h.eventsFlipWords} />
             </h2>
           </div>
           <div className="event-cards">
