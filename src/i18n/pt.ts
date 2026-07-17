@@ -3,7 +3,7 @@ const pt = {
     home: 'Início', about: 'Sobre', events: 'Eventos', join: 'Juntar-se', cta: 'Entrar no Clube',
   },
   home: {
-    heroLines: ['O teu lar', 'longe de', 'casa.'],
+    heroLines: ['De 244', 'para o', 'mundo.'],
     heroSub: 'Uma comunidade para estudantes e jovens\nprofissionais angolanos no Reino Unido.',
     cta1: 'Tornar-se Membro', cta2: 'Os Nossos Eventos',
     marquee: ['Cultura','Comunidade','Carreira','McKinsey × 244','SIP & Connect','Guest Talks','+244','Angola × UK','244 Club','AO × UK'],
