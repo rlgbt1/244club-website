@@ -7,6 +7,7 @@ export function useOrbitScroll() {
     if (!ring || !hero) return
 
     const contents = ring.querySelectorAll<HTMLElement>('.orb-content')
+    let frame: number | undefined
 
     function update() {
       const heroBottom = hero!.offsetTop + hero!.offsetHeight
@@ -16,8 +17,19 @@ export function useOrbitScroll() {
       contents.forEach(c => (c.style.animationPlayState = state))
     }
 
-    window.addEventListener('scroll', update, { passive: true })
+    const onScroll = () => {
+      if (frame !== undefined) return
+      frame = requestAnimationFrame(() => {
+        frame = undefined
+        update()
+      })
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
     update()
-    return () => window.removeEventListener('scroll', update)
+    return () => {
+      if (frame !== undefined) cancelAnimationFrame(frame)
+      window.removeEventListener('scroll', onScroll)
+    }
   }, [])
 }

@@ -42,6 +42,7 @@ export default function EventsPage() {
       </div>
 
       <div className="events-page">
+        <h2 className="sr-only">Event history</h2>
 
         <article className="ecard ecard-flagship reveal" style={{ marginBottom: '1rem' }}>
           <div className="ecard-flagship-img">

@@ -39,7 +39,7 @@ export default function AboutPage() {
           {a.cards.map((card, i) => (
             <div key={i} className={`about-card about-card-${i + 1} reveal`}>
               <div className="about-card-num">{card.num}</div>
-              <h3>{card.title}</h3>
+              <h2>{card.title}</h2>
               <p>{card.p1}</p>
               {card.p2 && <p style={{ marginTop: '.75rem' }}>{card.p2}</p>}
             </div>

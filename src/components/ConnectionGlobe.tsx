@@ -34,11 +34,13 @@ export function ConnectionGlobe() {
 
     let phi = 0.72
     let targetPhi = phi
-    let frame = 0
+    let frame: number | undefined
     const animationStartedAt = performance.now()
     let pointerDown = false
     let previousPointerX = 0
     let globe: Globe | undefined
+    let inViewport = true
+    let reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     globe = createGlobe(canvas, {
       devicePixelRatio: Math.min(window.devicePixelRatio, 1.5),
@@ -85,6 +87,7 @@ export function ConnectionGlobe() {
     canvas.addEventListener('pointercancel', onPointerEnd)
 
     const render = (now: number) => {
+      frame = undefined
       if (!pointerDown) targetPhi += 0.00135
       phi += (targetPhi - phi) * 0.08
       const cycleElapsed = (now - animationStartedAt) % 5000
@@ -103,12 +106,49 @@ export function ConnectionGlobe() {
         arcHeight: 0.26,
         arcWidth: 0.78,
       })
-      frame = requestAnimationFrame(render)
+      if (inViewport && !reducedMotion && !document.hidden) {
+        frame = requestAnimationFrame(render)
+      }
     }
-    render()
+
+    const startAnimation = () => {
+      if (frame === undefined && inViewport && !reducedMotion && !document.hidden) {
+        frame = requestAnimationFrame(render)
+      }
+    }
+    const stopAnimation = () => {
+      if (frame !== undefined) {
+        cancelAnimationFrame(frame)
+        frame = undefined
+      }
+    }
+
+    const visibilityObserver = new IntersectionObserver(([entry]) => {
+      inViewport = entry.isIntersecting
+      if (inViewport) startAnimation()
+      else stopAnimation()
+    }, { threshold: 0.05 })
+    visibilityObserver.observe(canvas)
+
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const onMotionChange = (event: MediaQueryListEvent) => {
+      reducedMotion = event.matches
+      if (reducedMotion) stopAnimation()
+      else startAnimation()
+    }
+    const onPageVisibilityChange = () => {
+      if (document.hidden) stopAnimation()
+      else startAnimation()
+    }
+    motionQuery.addEventListener('change', onMotionChange)
+    document.addEventListener('visibilitychange', onPageVisibilityChange)
+    startAnimation()
 
     return () => {
-      cancelAnimationFrame(frame)
+      stopAnimation()
+      visibilityObserver.disconnect()
+      motionQuery.removeEventListener('change', onMotionChange)
+      document.removeEventListener('visibilitychange', onPageVisibilityChange)
       canvas.removeEventListener('pointerdown', onPointerDown)
       canvas.removeEventListener('pointermove', onPointerMove)
       canvas.removeEventListener('pointerup', onPointerEnd)

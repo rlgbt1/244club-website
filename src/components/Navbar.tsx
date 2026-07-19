@@ -53,7 +53,8 @@ export default function Navbar() {
   ]
 
   return (
-    <>
+    <header>
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <nav className={`nav${scrolled ? ' scrolled' : ''}`} id="nav">
         <div className="nav-wrap">
           <Link to="/" className="nav-logo">
@@ -120,6 +121,6 @@ export default function Navbar() {
           </Link>
         </div>
       </nav>
-    </>
+    </header>
   )
 }

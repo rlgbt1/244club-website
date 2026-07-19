@@ -3,17 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>244 Club — Angola in the UK</title>
-  <meta name="description" content="A curated society for Angolan students and young professionals in the UK. Culture, community, careers." />
-  <meta property="og:title" content="244 Club" />
-  <meta property="og:description" content="Where Angolan students and young professionals in the UK find their people." />
-  <meta property="og:image" content="/assets/logo.png" />
+  <title>244 Club | Angolan Community in the UK</title>
+  <meta name="description" content="244 Club connects Angolan students and young professionals in the UK through community, culture, careers and events." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://244club.com/" />
+  <meta property="og:title" content="244 Club | Angolan Community in the UK" />
+  <meta property="og:description" content="244 Club connects Angolan students and young professionals in the UK through community, culture, careers and events." />
+  <meta property="og:image" content="https://244club.com/assets/logo.png" />
+  <meta property="og:url" content="https://244club.com/" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="244 Club" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="244 Club | Angolan Community in the UK" />
+  <meta name="twitter:description" content="244 Club connects Angolan students and young professionals in the UK through community, culture, careers and events." />
+  <meta name="twitter:image" content="https://244club.com/assets/logo.png" />
   <meta name="theme-color" content="#FAF8F3" />
   <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/logo.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    const redirectedPath = sessionStorage.getItem('244-path');
+    if (redirectedPath) {
+      sessionStorage.removeItem('244-path');
+      history.replaceState(null, '', redirectedPath);
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "244 Club",
+      "description": "A community for Angolan students and young professionals in the United Kingdom.",
+      "url": "https://244club.com/",
+      "foundingDate": "2025",
+      "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+      "sameAs": [
+        "https://www.instagram.com/_club244/",
+        "https://www.linkedin.com/company/244club/?viewAsMember=true",
+        "https://www.tiktok.com/@244.club"
+      ]
+    }
+  </script>
 </head>
 <body>
   <div id="root"></div>

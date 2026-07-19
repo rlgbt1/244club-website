@@ -1,6 +1,6 @@
 # 244 Club — Website
 
-**Live:** [244club.co.uk](https://244club.co.uk)
+**Live:** [244club.com](https://244club.com)
 
 ---
 
@@ -16,7 +16,7 @@ The club operates across two pillars: **social & cultural** (dinners, meetups, c
 
 A custom-built presentation and sign-up website, designed and developed from scratch as the club's public-facing hub. It replaces a basic Linktree and serves as the brand's permanent home online.
 
-**Live at** `244club.co.uk`, hosted on GitHub Pages.
+**Live at** `244club.com`, hosted on GitHub Pages.
 
 ---
 

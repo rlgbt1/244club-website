@@ -35,7 +35,7 @@ export default function JoinPage() {
 
         <div className="who-section reveal">
           <span className="label">{j.whoLabel}</span>
-          <h3>{j.whoH3}</h3>
+          <h2>{j.whoH3}</h2>
           <div className="who-grid">
             {j.who.map(item => (
               <div key={item.title} className="who-item">

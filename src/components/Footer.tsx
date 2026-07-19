@@ -40,14 +40,14 @@ export default function Footer() {
         </div>
         <div className="footer-links">
           <div>
-            <h5>{t.footer.nav}</h5>
+            <p className="footer-heading">{t.footer.nav}</p>
             <Link to="/">{t.nav.home}</Link>
             <Link to="/about">{t.nav.about}</Link>
             <Link to="/events">{t.nav.events}</Link>
             <Link to="/join">{t.nav.join}</Link>
           </div>
           <div>
-            <h5>{t.footer.connect}</h5>
+            <p className="footer-heading">{t.footer.connect}</p>
             <a href="mailto:club244ao@gmail.com">club244ao@gmail.com</a>
           </div>
         </div>

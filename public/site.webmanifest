@@ -1,0 +1,15 @@
+{
+  "name": "244 Club",
+  "short_name": "244 Club",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF8F3",
+  "theme_color": "#1C3320",
+  "icons": [
+    {
+      "src": "/assets/logo.png",
+      "sizes": "2000x2000",
+      "type": "image/png"
+    }
+  ]
+}
