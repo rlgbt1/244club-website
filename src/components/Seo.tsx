@@ -1,6 +1,12 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
 const SITE_URL = 'https://244club.com'
 const DEFAULT_IMAGE = `${SITE_URL}/assets/logo.png`
 
@@ -61,6 +67,14 @@ export default function Seo() {
       document.head.appendChild(canonical)
     }
     canonical.href = url
+
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_title: page.title,
+        page_location: url,
+        page_path: pathname,
+      })
+    }
   }, [pathname])
 
   return null
