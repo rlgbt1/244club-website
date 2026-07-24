@@ -31,17 +31,17 @@ const pt = {
     joinP: 'Acede a eventos, uma rede profissional, comunidade cultural e um grupo de WhatsApp onde as coisas acontecem mesmo.',
     joinCta1: 'Tornar-se Membro', joinCta2: 'Sobre o 244 Club',
     cards: [
-      { date: 'Maio 2025', title: 'McKinsey & Company', desc: 'Uma noite exclusiva com a McKinsey, insights da indústria, acesso direto e uma sala que provou o que o 244 Club pode abrir.', tag: 'Série Profissional', tagClass: 'pro flagship', flagship: true },
-      { date: 'Maio 2025', title: 'SIP & Connect', desc: 'O nosso evento social de assinatura: descontraído, curado e o tipo de noite onde as conexões reais acontecem.', tag: 'Social', tagClass: 'social' },
-      { date: 'Mar 2025', title: 'Guest Talk', desc: 'Duas sessões, duas vozes: Luísa Carlos, Associada de 4.º ano na Goldman Sachs, e Miguel Carneiro, CEO da TAAG. Acesso real, sem filtros.', tag: 'Profissional', tagClass: 'pro' },
-      { date: 'Mar 2025', title: 'Evento de Padel', desc: 'Ativo, divertido e com a comunidade em primeiro lugar. Porque por vezes o melhor networking acontece em campo.', tag: 'Social', tagClass: 'social' },
-      { date: 'Início de 2025', title: 'O Primeiro', desc: 'Onde tudo começou. O nosso primeiro evento presencial que provou que a comunidade era real e estava pronta.', tag: 'Fundação', tagClass: 'social' },
+      { date: 'Maio 2026', title: 'McKinsey & Company', desc: 'Uma noite exclusiva com a McKinsey, insights da indústria, acesso direto e uma sala que provou o que o 244 Club pode abrir.', tag: 'Série Profissional', tagClass: 'pro flagship', flagship: true },
+      { date: 'Maio 2026', title: 'SIP & Connect', desc: 'O nosso evento social de assinatura: descontraído, curado e o tipo de noite onde as conexões reais acontecem.', tag: 'Social', tagClass: 'social' },
+      { date: 'Mar 2026', title: 'Guest Talk', desc: 'Duas sessões, duas vozes: Luísa Carlos, Associada de 4.º ano na Goldman Sachs, e Miguel Carneiro, CEO da TAAG. Acesso real, sem filtros.', tag: 'Profissional', tagClass: 'pro' },
+      { date: 'Mar 2026', title: 'Evento de Padel', desc: 'Ativo, divertido e com a comunidade em primeiro lugar. Porque por vezes o melhor networking acontece em campo.', tag: 'Social', tagClass: 'social' },
+      { date: 'Início de 2026', title: 'O Primeiro', desc: 'Onde tudo começou. O nosso primeiro evento presencial que provou que a comunidade era real e estava pronta.', tag: 'Fundação', tagClass: 'social' },
     ],
   },
   about: {
     label: 'Quem somos',
     h1Lines: ['Mais do que', 'um indicativo.'], h1Em: 'Uma declaração.',
-    heroP: 'O 244 Club é uma associação de estudantes fundada em 2025. Reunimos estudantes e jovens profissionais angolanos em todo o Reino Unido, uma comunidade curada construída sobre cultura, ligação e ambição partilhada.',
+    heroP: 'O 244 Club é uma associação de estudantes fundada em 2026. Reunimos estudantes e jovens profissionais angolanos em todo o Reino Unido, uma comunidade curada construída sobre cultura, ligação e ambição partilhada.',
     quote: '"Criámos o 244 Club para que os estudantes e jovens profissionais angolanos no Reino Unido nunca tivessem de escolher entre ambição e identidade, entre construir o seu futuro e manter-se enraizados em quem são."',
     quoteBy: '244 Club',
     cards: [
@@ -70,15 +70,15 @@ const pt = {
     h1Lines: ['Cada sala', 'que entramos.'],
     intro: 'Desde jantares íntimos em comunidade até uma noite com a McKinsey & Company. Assim é como o 244 Club se tem mostrado desde o primeiro dia.',
     flagship: {
-      date: '16 de Maio · 2025', title: 'McKinsey & Company × 244 Club',
+      date: '16 de Maio · 2026', title: 'McKinsey & Company × 244 Club',
       desc: 'O 244 Club organizou um evento de parceria exclusivo com a McKinsey & Company, colocando os nossos membros em contacto direto com uma das empresas de consultoria mais prestigiadas do mundo. Insights da indústria, conversas de carreira e prova do que o 244 Club pode abrir.',
       tag: 'Série Profissional',
     },
     cards: [
-      { date: 'Maio 2025', title: 'SIP & Connect', desc: 'O nosso evento social de assinatura: curado, descontraído e o tipo de noite onde as conexões genuínas acontecem à volta de boas bebidas e conversa.', tag: 'Social', tagClass: 'social' },
-      { date: 'Março 2025', title: 'Guest Talk', desc: 'Duas sessões com líderes da indústria: Luísa Carlos, Associada de 4.º ano na Goldman Sachs, e Miguel Carneiro, CEO da TAAG. Histórias reais, conselhos honestos e acesso direto à sala.', tag: 'Profissional', tagClass: 'pro' },
-      { date: 'Março 2025', title: 'Evento de Padel', desc: 'Ativo, divertido e com a comunidade em primeiro lugar. Por vezes as melhores conversas acontecem em campo. O nosso evento de padel foi a prova perfeita disso.', tag: 'Social', tagClass: 'social' },
-      { date: 'Início de 2025', title: 'O Primeiro', desc: 'Onde o 244 Club se tornou real. O nosso primeiro evento presencial. O momento em que um grupo de WhatsApp se tornou uma comunidade com uma sala, uma mesa e rostos por detrás dos nomes.', tag: 'Fundação', tagClass: 'social' },
+      { date: 'Maio 2026', title: 'SIP & Connect', desc: 'O nosso evento social de assinatura: curado, descontraído e o tipo de noite onde as conexões genuínas acontecem à volta de boas bebidas e conversa.', tag: 'Social', tagClass: 'social' },
+      { date: 'Março 2026', title: 'Guest Talk', desc: 'Duas sessões com líderes da indústria: Luísa Carlos, Associada de 4.º ano na Goldman Sachs, e Miguel Carneiro, CEO da TAAG. Histórias reais, conselhos honestos e acesso direto à sala.', tag: 'Profissional', tagClass: 'pro' },
+      { date: 'Março 2026', title: 'Evento de Padel', desc: 'Ativo, divertido e com a comunidade em primeiro lugar. Por vezes as melhores conversas acontecem em campo. O nosso evento de padel foi a prova perfeita disso.', tag: 'Social', tagClass: 'social' },
+      { date: 'Início de 2026', title: 'O Primeiro', desc: 'Onde o 244 Club se tornou real. O nosso primeiro evento presencial. O momento em que um grupo de WhatsApp se tornou uma comunidade com uma sala, uma mesa e rostos por detrás dos nomes.', tag: 'Fundação', tagClass: 'social' },
     ],
     nextDate: 'Em breve', nextTitle: 'Próximo Evento',
     nextDesc: 'Estão mais eventos a ser preparados. Regista-te para ficares a par e seres o primeiro a saber quando algo é anunciado.',
@@ -112,7 +112,7 @@ const pt = {
   },
   footer: {
     tagline: 'O espaço onde estudantes e jovens\nprofissionais angolanos em UK encontram a sua gente.',
-    nav: 'Navegar', connect: 'Contacto', copy: '© 2025 244 Club',
+    nav: 'Navegar', connect: 'Contacto', copy: '© 2026 244 Club',
   },
 }
 

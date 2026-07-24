@@ -47,4 +47,4 @@ Warm ivory backgrounds with deep forest green as the primary brand colour. Angol
 
 ---
 
-*244 Club — Est. 2025*
+*244 Club — Est. 2026*

@@ -31,17 +31,17 @@ const en = {
     joinP: 'Access events, a professional network, cultural community, and a WhatsApp group where things actually happen.',
     joinCta1: 'Become a Member', joinCta2: 'About 244 Club',
     cards: [
-      { date: 'May 2025', title: 'McKinsey & Company', desc: 'An exclusive evening with McKinsey, industry insight, direct access, and a room that proved what 244 Club can open.', tag: 'Professional Series', tagClass: 'pro flagship', flagship: true },
-      { date: 'May 2025', title: 'SIP & Connect', desc: 'Our signature social: relaxed, curated, and the kind of evening where real connections happen.', tag: 'Social', tagClass: 'social' },
-      { date: 'Mar 2025', title: 'Guest Talk', desc: 'Two sessions, two voices: Luísa Carlos, Goldman Sachs 4th-year Associate, and Miguel Carneiro, CEO of TAAG. Real access, no filter.', tag: 'Professional', tagClass: 'pro' },
-      { date: 'Mar 2025', title: 'Padel Event', desc: 'Active, fun, and community-first. Because sometimes the best networking happens on the court.', tag: 'Social', tagClass: 'social' },
-      { date: 'Early 2025', title: 'The First One', desc: 'Where it all started. Our inaugural in-person event that proved the community was real and ready.', tag: 'Founding', tagClass: 'social' },
+      { date: 'May 2026', title: 'McKinsey & Company', desc: 'An exclusive evening with McKinsey, industry insight, direct access, and a room that proved what 244 Club can open.', tag: 'Professional Series', tagClass: 'pro flagship', flagship: true },
+      { date: 'May 2026', title: 'SIP & Connect', desc: 'Our signature social: relaxed, curated, and the kind of evening where real connections happen.', tag: 'Social', tagClass: 'social' },
+      { date: 'Mar 2026', title: 'Guest Talk', desc: 'Two sessions, two voices: Luísa Carlos, Goldman Sachs 4th-year Associate, and Miguel Carneiro, CEO of TAAG. Real access, no filter.', tag: 'Professional', tagClass: 'pro' },
+      { date: 'Mar 2026', title: 'Padel Event', desc: 'Active, fun, and community-first. Because sometimes the best networking happens on the court.', tag: 'Social', tagClass: 'social' },
+      { date: 'Early 2026', title: 'The First One', desc: 'Where it all started. Our inaugural in-person event that proved the community was real and ready.', tag: 'Founding', tagClass: 'social' },
     ],
   },
   about: {
     label: 'Who we are',
     h1Lines: ['More than', 'a dialling code.'], h1Em: 'A declaration.',
-    heroP: '244 Club is a student club founded in 2025. We bring together Angolan students and young professionals across the United Kingdom, a curated community built on culture, connection, and shared ambition.',
+    heroP: '244 Club is a student club founded in 2026. We bring together Angolan students and young professionals across the United Kingdom, a curated community built on culture, connection, and shared ambition.',
     quote: '"We built 244 Club so that Angolan students and young professionals in the UK would never have to choose between ambition and identity, between building their future and staying rooted in who they are."',
     quoteBy: '244 Club',
     cards: [
@@ -70,15 +70,15 @@ const en = {
     h1Lines: ['Every room', "we've entered."],
     intro: "From intimate community dinners to an evening with McKinsey & Company. Here's how 244 Club has shown up since day one.",
     flagship: {
-      date: 'May 16 · 2025', title: 'McKinsey & Company × 244 Club',
+      date: 'May 16 · 2026', title: 'McKinsey & Company × 244 Club',
       desc: '244 Club hosted an exclusive partnership event with McKinsey & Company, bringing our members into direct contact with one of the world\'s most prestigious consulting firms. Industry insights, career conversations, and proof of what 244 Club can open.',
       tag: 'Professional Series',
     },
     cards: [
-      { date: 'May 2025', title: 'SIP & Connect', desc: 'Our signature social event: curated, relaxed, and the kind of evening where genuine connections happen over good drinks and great conversation.', tag: 'Social', tagClass: 'social' },
-      { date: 'March 2025', title: 'Guest Talk', desc: 'Two sessions with industry leaders: Luísa Carlos, Goldman Sachs 4th-year Associate, and Miguel Carneiro, CEO of TAAG. Real stories, candid advice, and direct access to the room.', tag: 'Professional', tagClass: 'pro' },
-      { date: 'March 2025', title: 'Padel Event', desc: 'Active, fun, and community-first. Sometimes the best conversations happen on the court. Our padel event was the perfect proof of that.', tag: 'Social', tagClass: 'social' },
-      { date: 'Early 2025', title: 'The First One', desc: 'Where 244 Club became real. Our inaugural in-person event. The moment a WhatsApp group became a community with a room, a table, and faces behind the names.', tag: 'Founding', tagClass: 'social' },
+      { date: 'May 2026', title: 'SIP & Connect', desc: 'Our signature social event: curated, relaxed, and the kind of evening where genuine connections happen over good drinks and great conversation.', tag: 'Social', tagClass: 'social' },
+      { date: 'March 2026', title: 'Guest Talk', desc: 'Two sessions with industry leaders: Luísa Carlos, Goldman Sachs 4th-year Associate, and Miguel Carneiro, CEO of TAAG. Real stories, candid advice, and direct access to the room.', tag: 'Professional', tagClass: 'pro' },
+      { date: 'March 2026', title: 'Padel Event', desc: 'Active, fun, and community-first. Sometimes the best conversations happen on the court. Our padel event was the perfect proof of that.', tag: 'Social', tagClass: 'social' },
+      { date: 'Early 2026', title: 'The First One', desc: 'Where 244 Club became real. Our inaugural in-person event. The moment a WhatsApp group became a community with a room, a table, and faces behind the names.', tag: 'Founding', tagClass: 'social' },
     ],
     nextDate: 'Coming soon', nextTitle: 'Next Event',
     nextDesc: 'More events are in the works. Sign up to stay in the loop and be the first to know when something drops.',
@@ -112,7 +112,7 @@ const en = {
   },
   footer: {
     tagline: 'Where Angolan students and young\nprofessionals in the UK find their people.',
-    nav: 'Navigate', connect: 'Connect', copy: '© 2025 244 Club',
+    nav: 'Navigate', connect: 'Connect', copy: '© 2026 244 Club',
   },
 }
 
