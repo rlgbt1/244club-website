@@ -46,10 +46,11 @@ export default function Navbar() {
     path === '/' ? location.pathname === '/' : location.pathname.startsWith(path)
 
   const links = [
-    { to: '/',       label: t.nav.home },
-    { to: '/about',  label: t.nav.about },
-    { to: '/events', label: t.nav.events },
-    { to: '/join',   label: t.nav.join },
+    { to: '/',                label: t.nav.home },
+    { to: '/about',           label: t.nav.about },
+    { to: '/events',          label: t.nav.events },
+    { to: '/minds-in-action', label: t.nav.mindsInAction },
+    { to: '/join',            label: t.nav.join },
   ]
 
   return (

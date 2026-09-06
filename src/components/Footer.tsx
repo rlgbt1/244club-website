@@ -44,6 +44,7 @@ export default function Footer() {
             <Link to="/">{t.nav.home}</Link>
             <Link to="/about">{t.nav.about}</Link>
             <Link to="/events">{t.nav.events}</Link>
+            <Link to="/minds-in-action">{t.nav.mindsInAction}</Link>
             <Link to="/join">{t.nav.join}</Link>
           </div>
           <div>

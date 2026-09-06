@@ -9,6 +9,7 @@ const HomePage = lazy(() => import('./pages/HomePage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
 const EventsPage = lazy(() => import('./pages/EventsPage'))
 const JoinPage = lazy(() => import('./pages/JoinPage'))
+const MindsInActionPage = lazy(() => import('./pages/MindsInActionPage'))
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -29,6 +30,7 @@ export default function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/events" element={<EventsPage />} />
             <Route path="/join" element={<JoinPage />} />
+            <Route path="/minds-in-action" element={<MindsInActionPage />} />
           </Routes>
         </Suspense>
       </main>

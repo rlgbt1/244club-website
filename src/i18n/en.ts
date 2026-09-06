@@ -1,6 +1,6 @@
 const en = {
   nav: {
-    home: 'Home', about: 'About', events: 'Events', join: 'Join Us', cta: 'Join the Club',
+    home: 'Home', about: 'About', events: 'Events', mindsInAction: 'Minds in Action', join: 'Join Us', cta: 'Join the Club',
   },
   home: {
     heroLines: ['Your home', 'away from', 'home.'],
@@ -113,6 +113,26 @@ const en = {
   footer: {
     tagline: 'Where Angolan students and young\nprofessionals in the UK find their people.',
     nav: 'Navigate', connect: 'Connect', copy: '© 2026 244 Club',
+  },
+  mindsInAction: {
+    hashtag: '#MindsInAction',
+    lead: 'Where ideas take shape.',
+    intro: 'Minds in Action is the editorial space of 244 Club, bringing together the ideas, research and perspectives of Angolan students and young professionals across the UK.',
+    more1: 'From dissertations and academic research to essays, career reflections, cultural commentary and original opinion, it is a space for members to share the work they have been thinking about, working on and creating.',
+    more2: 'More than a collection of articles, Minds in Action is a growing record of the curiosity, ambition and intellectual energy within our community, giving ideas a platform and encouraging others to think, question and contribute.',
+    closing: 'Written by our community. For a community that keeps moving.',
+    readMore: 'Read more',
+    readLess: 'Show less',
+    categories: ['All', 'Business', 'Research', 'Culture', 'Career', 'Technology', 'Finance'],
+    firstLabel: 'The First',
+    featured: {
+      title: 'From Luanda to London: Building Identity Abroad',
+      author: 'Author Name · University',
+      tag: 'Culture',
+      readTime: '6 min read',
+      cta: 'Read Article →',
+    },
+    moreSoon: 'More articles coming soon.',
   },
 }
 

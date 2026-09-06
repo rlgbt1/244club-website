@@ -1,6 +1,6 @@
 const pt = {
   nav: {
-    home: 'Início', about: 'Sobre', events: 'Eventos', join: 'Juntar-se', cta: 'Entrar no Clube',
+    home: 'Início', about: 'Sobre', events: 'Eventos', mindsInAction: 'Minds in Action', join: 'Juntar-se', cta: 'Entrar no Clube',
   },
   home: {
     heroLines: ['De 244', 'para o', 'mundo.'],
@@ -113,6 +113,26 @@ const pt = {
   footer: {
     tagline: 'O espaço onde estudantes e jovens\nprofissionais angolanos em UK encontram a sua gente.',
     nav: 'Navegar', connect: 'Contacto', copy: '© 2026 244 Club',
+  },
+  mindsInAction: {
+    hashtag: '#MindsInAction',
+    lead: 'Onde as ideias ganham forma.',
+    intro: 'Minds in Action é o espaço editorial do 244 Club, reunindo as ideias, a investigação e as perspetivas de estudantes e jovens profissionais angolanos em todo o Reino Unido.',
+    more1: 'De dissertações e investigação académica a ensaios, reflexões de carreira, comentário cultural e opinião original, é um espaço para os membros partilharem o trabalho em que têm pensado, trabalhado e criado.',
+    more2: 'Mais do que uma coleção de artigos, o Minds in Action é um registo crescente da curiosidade, ambição e energia intelectual dentro da nossa comunidade, dando às ideias uma plataforma e incentivando outros a pensar, questionar e contribuir.',
+    closing: 'Escrito pela nossa comunidade. Para uma comunidade sempre em movimento.',
+    readMore: 'Ler mais',
+    readLess: 'Mostrar menos',
+    categories: ['Todos', 'Business', 'Research', 'Cultura', 'Carreira', 'Tecnologia', 'Finanças'],
+    firstLabel: 'O Primeiro',
+    featured: {
+      title: 'De Luanda a Londres: Construir Identidade no Estrangeiro',
+      author: 'Nome do Autor · Universidade',
+      tag: 'Cultura',
+      readTime: '6 min de leitura',
+      cta: 'Ler Artigo →',
+    },
+    moreSoon: 'Mais artigos brevemente.',
   },
 }
 

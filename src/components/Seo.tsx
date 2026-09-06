@@ -27,6 +27,10 @@ const pages: Record<string, { title: string; description: string }> = {
     title: 'Join 244 Club | Angolan Community UK',
     description: 'Join 244 Club, a community for Angolan students and young professionals in the UK and across the diaspora.',
   },
+  '/minds-in-action': {
+    title: 'Minds in Action | 244 Club Editorial — Angolan Community UK',
+    description: 'Minds in Action is the editorial space of 244 Club: essays, research, career reflections and cultural commentary written by Angolan students and young professionals across the UK.',
+  },
 }
 
 function setMeta(selector: string, attribute: 'name' | 'property', value: string, content: string) {

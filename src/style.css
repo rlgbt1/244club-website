@@ -1206,3 +1206,306 @@ h1 em, h2 em {
   .lang-dropdown { margin-left: .5rem; }
   .lang-menu { right: 0; }
 }
+
+/* ════════════════════════════════════════════════════════
+   MINDS IN ACTION (local preview — not linked from nav)
+   ════════════════════════════════════════════════════════ */
+:root {
+  --mia-terracotta: #C0503A;
+}
+
+.mia-page {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--nav-h) + 3rem) 0 5rem;
+}
+
+.mia-africa {
+  position: absolute;
+  top: 8%;
+  pointer-events: none;
+  z-index: 0;
+  user-select: none;
+}
+.mia-africa-left {
+  left: 0;
+  width: 420px;
+  opacity: .06;
+  transform: translateX(-38%) rotate(-15deg);
+}
+.mia-africa-right {
+  right: 0;
+  top: 32%;
+  width: 380px;
+  opacity: .05;
+  transform: translateX(38%) rotate(12deg) scaleX(-1);
+}
+
+.mia-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ── entrance animations ─────────────────────────────────── */
+.mia-anim {
+  animation-duration: .7s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  animation-fill-mode: both;
+}
+@keyframes miaClipUp {
+  from { clip-path: inset(100% 0 0 0); opacity: 0; }
+  to   { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+@keyframes miaFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes miaFadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes miaCardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.mia-anim-1 { animation-name: miaClipUp; animation-delay: 0ms; }
+.mia-anim-2 { animation-name: miaClipUp; animation-delay: 80ms; }
+.mia-anim-3 { animation-name: miaClipUp; animation-delay: 160ms; }
+.mia-anim-4 { animation-name: miaFadeIn; animation-delay: 240ms; }
+.mia-anim-5 { animation-name: miaFadeUp; animation-delay: 320ms; }
+.mia-anim-6 { animation-name: miaFadeIn; animation-delay: 440ms; }
+.mia-anim-7 { animation-name: miaCardIn; animation-delay: 520ms; animation-duration: .6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mia-anim { animation: none !important; opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  .mia-more { transition: none !important; }
+}
+
+/* ── masthead ─────────────────────────────────────────────── */
+.mia-masthead { text-align: left; }
+.mia-title {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  color: var(--forest);
+  letter-spacing: -.03em;
+  line-height: 1.05;
+}
+.mia-hashtag {
+  display: block;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  color: var(--mia-terracotta);
+  margin-top: .25rem;
+}
+.mia-intro-block {
+  margin-top: 1.25rem;
+  max-width: 640px;
+}
+.mia-lead {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--forest);
+}
+.mia-intro {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-top: .6rem;
+}
+
+/* Collapsible "read more" content — grid-rows trick animates to auto height */
+.mia-more {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .45s var(--ease);
+}
+.mia-more.expanded { grid-template-rows: 1fr; }
+.mia-more-inner {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: .85rem;
+}
+.mia-more-inner p {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+.mia-more-inner .mia-closing {
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.mia-readmore-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: .85rem;
+  font-family: var(--font-body);
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--forest);
+  border-bottom: 1px solid var(--sage-light);
+  padding-bottom: 2px;
+  transition: border-color .2s, color .2s;
+}
+.mia-readmore-btn:hover { border-color: var(--forest); color: var(--forest-mid); }
+.mia-readmore-chevron { transition: transform .25s var(--ease); }
+.mia-readmore-chevron.open { transform: rotate(180deg); }
+
+.mia-rule {
+  height: 1px;
+  background: var(--sage-light);
+  margin: 2rem 0;
+}
+
+/* ── filter pills ─────────────────────────────────────────── */
+.mia-filters {
+  display: flex;
+  justify-content: flex-end;
+  gap: .5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 2px;
+}
+.mia-filters::-webkit-scrollbar { display: none; }
+.mia-pill {
+  flex-shrink: 0;
+  border-radius: var(--r-pill);
+  padding: .35rem 1rem;
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: 500;
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--sage-light);
+  transition: background .2s, color .2s, border-color .2s;
+}
+.mia-pill.active {
+  background: var(--forest);
+  color: var(--ivory);
+  border-color: var(--forest);
+}
+.mia-pill:not(.active):hover { border-color: var(--sand); color: var(--ink); }
+
+/* ── "The First" label ───────────────────────────────────── */
+.mia-first-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--mia-terracotta);
+  margin: 3rem 0 .5rem;
+}
+
+/* ── featured card ────────────────────────────────────────── */
+.mia-feature {
+  background: var(--forest);
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 2.5rem;
+  align-items: center;
+}
+.mia-feature-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  color: var(--ivory);
+  letter-spacing: -.01em;
+  line-height: 1.15;
+}
+.mia-feature-author {
+  font-family: var(--font-body);
+  color: var(--sage);
+  font-size: .85rem;
+  margin-top: .75rem;
+}
+.mia-feature-tag {
+  display: inline-block;
+  background: var(--mia-terracotta);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  border-radius: var(--r-pill);
+  padding: .3rem .85rem;
+  margin-top: .75rem;
+}
+.mia-feature-read {
+  font-family: var(--font-body);
+  color: rgba(250,248,243,.6);
+  font-size: .8rem;
+  margin-top: .5rem;
+}
+.mia-feature-cta {
+  display: inline-block;
+  color: var(--ivory);
+  font-family: var(--font-body);
+  font-size: .9rem;
+  font-weight: 500;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  transition: border-color .2s;
+}
+.mia-feature-cta:hover { border-bottom-color: rgba(255,255,255,1); }
+
+.mia-feature-media {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--r-md);
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mia-feature-media span {
+  font-family: var(--font-body);
+  font-size: .75rem;
+  letter-spacing: .15em;
+  color: rgba(250,248,243,.2);
+}
+
+.mia-more-soon {
+  font-family: var(--font-body);
+  color: var(--muted);
+  font-size: .9rem;
+  font-style: italic;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* ── responsive ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .mia-feature { grid-template-columns: 60% 40%; }
+}
+@media (max-width: 768px) {
+  .mia-feature { grid-template-columns: 1fr; }
+  .mia-feature-media { order: -1; }
+  .mia-filters { justify-content: flex-start; flex-wrap: wrap; }
+}
+@media (max-width: 540px) {
+  .mia-africa-left { width: 180px; }
+  .mia-africa-right { width: 180px; }
+  .mia-feature { padding: 1.5rem; }
+  .mia-filters { flex-wrap: nowrap; justify-content: flex-start; }
+}
