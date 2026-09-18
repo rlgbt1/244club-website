@@ -1202,6 +1202,116 @@ h1 em, h2 em {
   border-radius: 50%; object-fit: cover; flex-shrink: 0;
 }
 
+/* ── TRACKER PAGE ────────────────────────────────────────── */
+.tracker-page { padding: 0 1.25rem 5rem; max-width: var(--max-w); margin: 0 auto; }
+
+.tracker-state { background: var(--white); border: 1px solid var(--stone); border-radius: var(--r-lg); padding: 2.5rem; text-align: center; color: var(--muted); }
+.tracker-state h3 { font-size: 1.2rem; color: var(--ink); margin-bottom: .5rem; }
+.tracker-state p { margin-bottom: 1.25rem; }
+.tracker-state-error { border-color: rgba(204,0,0,.25); }
+
+.tracker-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.5rem; }
+.tracker-tab {
+  padding: .55rem 1.1rem; border-radius: var(--r-pill); border: 1px solid var(--stone);
+  background: var(--white); font-family: var(--font-body); font-size: .82rem; font-weight: 600;
+  color: var(--muted); transition: all .2s var(--ease);
+}
+.tracker-tab:hover { border-color: var(--sage-light); color: var(--ink); }
+.tracker-tab.active { background: var(--forest); border-color: var(--forest); color: var(--ivory); }
+
+.tracker-filters {
+  display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 1rem; align-items: end;
+  background: var(--white); border: 1px solid var(--stone); border-radius: var(--r-lg);
+  padding: 1.25rem; margin-bottom: 2rem;
+}
+.tracker-filter-search { grid-column: span 1; }
+
+/* Beside the hero heading, desktop shows the logo split-column, mobile stacks it next to the h1 */
+.tracker-hero-row { display: contents; }
+.tracker-logo-mobile { display: none; }
+.tracker-logo-desktop { display: flex; }
+
+.tracker-tier { margin-bottom: 1.5rem; border: 1px solid var(--stone); border-radius: var(--r-lg); overflow: hidden; background: var(--white); }
+.tracker-tier-header {
+  width: 100%; display: flex; align-items: center; gap: .6rem;
+  padding: 1rem 1.25rem; background: var(--cream); font-family: var(--font-body);
+  font-size: .95rem; font-weight: 700; color: var(--ink); text-align: left;
+}
+.tracker-tier-chevron { display: inline-block; transition: transform .2s var(--ease); color: var(--forest-light); }
+.tracker-tier-chevron.collapsed { transform: rotate(-90deg); }
+.tracker-tier-count {
+  margin-left: auto; font-size: .75rem; font-weight: 600; color: var(--muted);
+  background: var(--stone); padding: .15rem .55rem; border-radius: var(--r-pill);
+}
+
+.tracker-table-wrap { overflow-x: auto; }
+.tracker-table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+.tracker-table th {
+  font-family: var(--font-body); font-size: .72rem; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--hint); text-align: left; padding: .75rem 1.1rem;
+  border-bottom: 1px solid var(--stone); white-space: nowrap;
+}
+.tracker-table td { padding: .75rem 1.1rem; border-bottom: 1px solid var(--stone); color: var(--body); vertical-align: middle; }
+.tracker-table tbody tr:last-child td { border-bottom: none; }
+.tracker-table tbody tr:hover { background: var(--sage-faint); }
+.tracker-table a { color: var(--forest); font-weight: 500; }
+.tracker-table a:hover { color: var(--forest-light); }
+
+.tracker-row-partner { background: rgba(255,191,0,.06); box-shadow: inset 3px 0 0 var(--angola-gold); }
+.tracker-company { font-weight: 600; color: var(--ink); white-space: nowrap; }
+.tracker-partner-badge {
+  display: inline-block; font-family: var(--font-body); font-size: .62rem; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--angola-black);
+  background: var(--angola-gold); padding: .18rem .5rem; border-radius: 4px; margin-right: .5rem;
+}
+
+.tracker-date { font-weight: 600; white-space: nowrap; }
+.tracker-date-open { color: var(--forest-light); }
+.tracker-date-closed { color: var(--angola-red); }
+.tracker-date-opening-soon { color: #2563a8; }
+
+.tracker-status-select {
+  padding: .4rem .6rem; border: 1px solid var(--stone); border-radius: var(--r-sm);
+  font-family: var(--font-body); font-size: .78rem; font-weight: 600; color: var(--ink);
+  background: var(--ivory); cursor: pointer; appearance: none;
+}
+.tracker-status-select:focus { outline: none; border-color: var(--forest-light); box-shadow: 0 0 0 3px rgba(67,122,80,.1); }
+
+.tracker-cards { display: none; }
+
+.tracker-updated { font-size: .78rem; color: var(--hint); text-align: center; margin: 1rem 0 2rem; }
+
+.tracker-notif-placeholder {
+  border: 1px dashed var(--sand); border-radius: var(--r-lg); padding: 1.5rem; text-align: center; color: var(--muted);
+}
+.tracker-notif-placeholder .label { display: block; margin-bottom: .4rem; }
+.tracker-notif-placeholder p { font-size: .85rem; }
+
+@media (max-width: 860px) {
+  .tracker-filters { grid-template-columns: 1fr 1fr; }
+  .tracker-filter-search { grid-column: 1 / -1; }
+
+  .tracker-logo-desktop { display: none; }
+  .tracker-hero-row { display: flex; flex-direction: row; align-items: flex-start; gap: 1.25rem; }
+  .tracker-logo-mobile { display: flex; align-items: center; flex-shrink: 0; padding-top: .25rem; }
+  .tracker-logo-mobile img { width: 110px; height: auto; opacity: .85; filter: drop-shadow(0 4px 12px rgba(28,51,32,.12)); }
+
+  .tracker-table-wrap { display: none; }
+  .tracker-cards { display: flex; flex-direction: column; gap: .75rem; padding: 1rem; }
+  .tracker-card {
+    position: relative; border: 1px solid var(--stone); border-radius: var(--r-md);
+    padding: 1rem; background: var(--ivory);
+  }
+  .tracker-card-partner { box-shadow: inset 3px 0 0 var(--angola-gold); }
+  .tracker-card .tracker-partner-badge { margin-bottom: .5rem; margin-right: 0; }
+  .tracker-card h4 { font-family: var(--font-body); font-size: .95rem; font-weight: 700; color: var(--ink); margin-bottom: .6rem; line-height: 1.4; }
+  .tracker-card h4 a { color: inherit; }
+  .tracker-card-row { display: flex; justify-content: space-between; gap: 1rem; font-size: .82rem; padding: .3rem 0; border-bottom: 1px solid var(--stone); }
+  .tracker-card-row:last-of-type { border-bottom: none; }
+  .tracker-card-row > span:first-child { color: var(--hint); font-weight: 600; }
+  .tracker-card .field { margin-top: .6rem; margin-bottom: 0; }
+}
+
 @media (max-width: 860px) {
   .lang-dropdown { margin-left: .5rem; }
   .lang-menu { right: 0; }

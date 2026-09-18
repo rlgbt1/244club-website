@@ -1,6 +1,6 @@
 const en = {
   nav: {
-    home: 'Home', about: 'About', events: 'Events', join: 'Join Us', cta: 'Join the Club',
+    home: 'Home', about: 'About', events: 'Events', join: 'Join Us', tracker: '244 Tracker', cta: 'Join the Club',
   },
   home: {
     heroLines: ['Your home', 'away from', 'home.'],
@@ -109,6 +109,30 @@ const en = {
     formLabel: 'Sign up', formH2: 'Express your interest',
     formP: "Fill in the form below. Once we've reviewed your details we'll be in touch with next steps, upcoming events, and how to get fully plugged in to 244 Club.",
     contactLabel: 'Get in touch',
+  },
+  tracker: {
+    label: 'Track your applications',
+    h1Lines: ['Internships &', 'opportunities.'],
+    intro: "A live, member-maintained tracker of internships, spring weeks, and graduate programmes relevant to 244 Club, pulled straight from our shared spreadsheet.",
+    tabAll: 'All',
+    searchLabel: 'Search', searchPlaceholder: 'Search company or programme…',
+    myStatusLabel: 'My Status', myStatusAll: 'All statuses',
+    openStatusLabel: 'Open Status', openStatusAll: 'All', openStatusOpen: 'Open', openStatusSoon: 'Opening soon', openStatusClosed: 'Closed',
+    coverLetterLabel: 'Cover Letter', coverLetterAll: 'All', coverLetterYes: 'Required', coverLetterNo: 'Not required',
+    statusOptions: ['Not Applied', 'Applied', 'In Progress', 'Interview', 'Offer', 'Rejected'],
+    columns: {
+      status: 'My Status', company: 'Company', programme: 'Programme',
+      opening: 'Opens', closing: 'Closes', stage: 'Latest Stage', process: 'Process',
+    },
+    partnerBadge: '244 Partner',
+    loading: 'Loading the latest opportunities…',
+    errorTitle: "Couldn't load the tracker",
+    errorText: "We couldn't reach the spreadsheet just now. Check your connection and try again.",
+    retry: 'Retry',
+    empty: 'No opportunities match your filters yet.',
+    notifTitle: 'Notifications',
+    notifText: 'Deadline reminders are coming soon. For now, check back regularly or bookmark this page.',
+    updated: 'Live from our shared spreadsheet, always up to date.',
   },
   footer: {
     tagline: 'Where Angolan students and young\nprofessionals in the UK find their people.',

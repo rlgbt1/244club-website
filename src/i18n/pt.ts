@@ -1,6 +1,6 @@
 const pt = {
   nav: {
-    home: 'Início', about: 'Sobre', events: 'Eventos', join: 'Juntar-se', cta: 'Entrar no Clube',
+    home: 'Início', about: 'Sobre', events: 'Eventos', join: 'Juntar-se', tracker: '244 Tracker', cta: 'Entrar no Clube',
   },
   home: {
     heroLines: ['De 244', 'para o', 'mundo.'],
@@ -109,6 +109,30 @@ const pt = {
     formLabel: 'Registo', formH2: 'Expressa o teu interesse',
     formP: 'Preenche o formulário abaixo. Assim que analisarmos os teus dados, entraremos em contacto com os próximos passos, eventos futuros e como ficares completamente ligado ao 244 Club.',
     contactLabel: 'Contacta-nos',
+  },
+  tracker: {
+    label: 'Acompanha as tuas candidaturas',
+    h1Lines: ['Estágios e', 'oportunidades.'],
+    intro: 'Um tracker ao vivo, mantido pelos membros, de estágios, spring weeks e programas de graduados relevantes para o 244 Club, atualizado diretamente a partir da nossa folha de cálculo partilhada.',
+    tabAll: 'Todos',
+    searchLabel: 'Pesquisar', searchPlaceholder: 'Pesquisar empresa ou programa…',
+    myStatusLabel: 'O Meu Estado', myStatusAll: 'Todos os estados',
+    openStatusLabel: 'Estado da Candidatura', openStatusAll: 'Todos', openStatusOpen: 'Aberta', openStatusSoon: 'Abre em breve', openStatusClosed: 'Encerrada',
+    coverLetterLabel: 'Carta de Motivação', coverLetterAll: 'Todos', coverLetterYes: 'Necessária', coverLetterNo: 'Não necessária',
+    statusOptions: ['Não Candidatado', 'Candidatado', 'Em Progresso', 'Entrevista', 'Oferta', 'Rejeitado'],
+    columns: {
+      status: 'O Meu Estado', company: 'Empresa', programme: 'Programa',
+      opening: 'Abre', closing: 'Fecha', stage: 'Última Fase', process: 'Processo',
+    },
+    partnerBadge: 'Parceiro 244',
+    loading: 'A carregar as oportunidades mais recentes…',
+    errorTitle: 'Não foi possível carregar o tracker',
+    errorText: 'Não conseguimos aceder à folha de cálculo neste momento. Verifica a tua ligação e tenta novamente.',
+    retry: 'Tentar novamente',
+    empty: 'Nenhuma oportunidade corresponde aos teus filtros por agora.',
+    notifTitle: 'Notificações',
+    notifText: 'Lembretes de prazos chegam em breve. Por agora, volta a verificar regularmente ou guarda esta página nos favoritos.',
+    updated: 'Ao vivo a partir da nossa folha de cálculo partilhada, sempre atualizado.',
   },
   footer: {
     tagline: 'O espaço onde estudantes e jovens\nprofissionais angolanos em UK encontram a sua gente.',

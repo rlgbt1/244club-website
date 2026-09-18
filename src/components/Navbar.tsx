@@ -50,6 +50,7 @@ export default function Navbar() {
     { to: '/about',  label: t.nav.about },
     { to: '/events', label: t.nav.events },
     { to: '/join',   label: t.nav.join },
+    { to: '/tracker', label: t.nav.tracker },
   ]
 
   return (

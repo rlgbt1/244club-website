@@ -27,6 +27,10 @@ const pages: Record<string, { title: string; description: string }> = {
     title: 'Join 244 Club | Angolan Community UK',
     description: 'Join 244 Club, a community for Angolan students and young professionals in the UK and across the diaspora.',
   },
+  '/tracker': {
+    title: '244 Tracker — Internships & Opportunities | 244 Club',
+    description: 'Track internships, spring weeks, off-cycle roles and graduate programmes relevant to Angolan students and young professionals in the UK.',
+  },
 }
 
 function setMeta(selector: string, attribute: 'name' | 'property', value: string, content: string) {
