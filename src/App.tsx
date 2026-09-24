@@ -11,6 +11,8 @@ const EventsPage = lazy(() => import('./pages/EventsPage'))
 const JoinPage = lazy(() => import('./pages/JoinPage'))
 const MindsInActionPage = lazy(() => import('./pages/MindsInActionPage'))
 
+const ArticlePage = lazy(() => import('./pages/ArticlePage'))
+
 function ScrollToTop() {
   const { pathname } = useLocation()
   useEffect(() => { window.scrollTo(0, 0) }, [pathname])
@@ -31,6 +33,7 @@ export default function App() {
             <Route path="/events" element={<EventsPage />} />
             <Route path="/join" element={<JoinPage />} />
             <Route path="/minds-in-action" element={<MindsInActionPage />} />
+            <Route path="/minds-in-action/the-bias-isnt-in-you" element={<ArticlePage />} />
           </Routes>
         </Suspense>
       </main>

@@ -1,11 +1,17 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useLang } from '../context/LanguageContext'
+import { article, articlePath, author, portrait, readingMinutes, publishedDate, publicationLabel } from '../content/willva'
 import { useT } from '../i18n'
 import { asset } from '../utils/asset'
 
 export default function MindsInActionPage() {
   const t = useT()
   const m = t.mindsInAction
-  const [active, setActive] = useState(m.categories[0])
+  const { lang } = useLang()
+  const story = article[lang]
+  const [active, setActive] = useState(0)
+  const showArticle = active === 0 || active === 2 || active === 5
   const [expanded, setExpanded] = useState(false)
 
   return (
@@ -59,31 +65,45 @@ export default function MindsInActionPage() {
         <div className="mia-rule mia-anim mia-anim-4" />
 
         <div className="mia-filters mia-anim mia-anim-5">
-          {m.categories.map(cat => (
+          {m.categories.map((cat, index) => (
             <button
               key={cat}
-              className={`mia-pill${active === cat ? ' active' : ''}`}
-              onClick={() => setActive(cat)}
+              className={`mia-pill${active === index ? ' active' : ''}`}
+              aria-pressed={active === index}
+              onClick={() => setActive(index)}
             >
               {cat}
             </button>
           ))}
         </div>
 
+        {showArticle ? <>
         <span className="mia-first-label mia-anim mia-anim-6">{m.firstLabel}</span>
 
-        <article className="mia-feature mia-anim mia-anim-7">
+        <article className="mia-feature mia-feature-compact mia-anim mia-anim-7">
           <div className="mia-feature-body">
-            <h2 className="mia-feature-title">{m.featured.title}</h2>
-            <p className="mia-feature-author">{m.featured.author}</p>
-            <span className="mia-feature-tag">{m.featured.tag}</span>
-            <p className="mia-feature-read">{m.featured.readTime}</p>
-            <a href="#" className="mia-feature-cta">{m.featured.cta}</a>
+            <div className="mia-feature-meta">
+              <span className="mia-feature-tag">{story.category}</span>
+              <time dateTime={publishedDate}>{publicationLabel(lang)}</time>
+            </div>
+            <h2 className="mia-feature-title"><Link to={articlePath}>{story.title}</Link></h2>
+            <p className="mia-feature-deck">{story.subtitle}</p>
           </div>
-          <div className="mia-feature-media">
-            <span>IMAGE</span>
+          <div className="mia-feature-byline">
+            <Link to={articlePath} className="mia-feature-portrait" aria-label={`${m.featured.cta}: ${story.title}`}>
+              <img src={asset(portrait)} alt={author} width="1118" height="1600" loading="lazy" />
+            </Link>
+            <div>
+              <p className="mia-feature-name">{author}</p>
+              <p className="mia-feature-university">Ravensbourne University London</p>
+            </div>
+          </div>
+          <div className="mia-feature-footer">
+            <p className="mia-feature-read">{readingMinutes(lang)} {lang === 'pt' ? 'min de leitura' : 'min read'}</p>
+            <Link to={articlePath} className="mia-feature-cta">{m.featured.cta}</Link>
           </div>
         </article>
+        </> : <p className="mia-empty" role="status">{lang === 'pt' ? 'Novas perspetivas nesta categoria, em breve.' : 'New perspectives in this category, coming soon.'}</p>}
 
         <p className="mia-more-soon">{m.moreSoon}</p>
       </div>

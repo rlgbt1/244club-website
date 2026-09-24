@@ -1,6 +1,9 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
+import { useLang } from '../context/LanguageContext'
+import { article, articlePath, author, portrait } from '../content/willva'
+
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void
@@ -45,9 +48,13 @@ function setMeta(selector: string, attribute: 'name' | 'property', value: string
 
 export default function Seo() {
   const { pathname } = useLocation()
+  const { lang } = useLang()
 
   useEffect(() => {
-    const page = pages[pathname] ?? pages['/']
+    const isArticle = pathname === articlePath
+    const story = article[lang]
+    const page = isArticle ? { title: `${story.title} | Minds in Action — 244 Club`, description: story.subtitle } : pages[pathname] ?? pages['/']
+    const image = isArticle ? `${SITE_URL}${portrait}` : DEFAULT_IMAGE
     const url = `${SITE_URL}${pathname}`
     document.title = page.title
 
@@ -56,13 +63,13 @@ export default function Seo() {
     setMeta('meta[property="og:title"]', 'property', 'og:title', page.title)
     setMeta('meta[property="og:description"]', 'property', 'og:description', page.description)
     setMeta('meta[property="og:url"]', 'property', 'og:url', url)
-    setMeta('meta[property="og:type"]', 'property', 'og:type', 'website')
+    setMeta('meta[property="og:type"]', 'property', 'og:type', isArticle ? 'article' : 'website')
     setMeta('meta[property="og:site_name"]', 'property', 'og:site_name', '244 Club')
-    setMeta('meta[property="og:image"]', 'property', 'og:image', DEFAULT_IMAGE)
+    setMeta('meta[property="og:image"]', 'property', 'og:image', image)
     setMeta('meta[name="twitter:card"]', 'name', 'twitter:card', 'summary_large_image')
     setMeta('meta[name="twitter:title"]', 'name', 'twitter:title', page.title)
     setMeta('meta[name="twitter:description"]', 'name', 'twitter:description', page.description)
-    setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', DEFAULT_IMAGE)
+    setMeta('meta[name="twitter:image"]', 'name', 'twitter:image', image)
 
     let canonical = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]')
     if (!canonical) {
@@ -72,6 +79,19 @@ export default function Seo() {
     }
     canonical.href = url
 
+    const schema = document.createElement('script')
+    if (isArticle) {
+      schema.type = 'application/ld+json'
+      schema.textContent = JSON.stringify({
+        '@context': 'https://schema.org', '@type': 'Article',
+        headline: story.title, description: story.subtitle, image,
+        author: { '@type': 'Person', name: author },
+        publisher: { '@type': 'Organization', name: '244 Club', url: SITE_URL },
+        inLanguage: lang, mainEntityOfPage: url,
+      })
+      document.head.appendChild(schema)
+    }
+
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'page_view', {
         page_title: page.title,
@@ -79,7 +99,8 @@ export default function Seo() {
         page_path: pathname,
       })
     }
-  }, [pathname])
+    return () => { schema.remove() }
+  }, [pathname, lang])
 
   return null
 }
