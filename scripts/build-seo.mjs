@@ -23,7 +23,7 @@ for (const [path, page] of Object.entries(routes)) {
   const isArticle = Boolean(selected)
   const { article, author, publishedDate } = selected || willva
   const url = site + (path === '/' ? '/' : `${path}/`)
-  const image = `${site}/assets/social/${selected === willva ? 'willva-camera-preview' : '244-club-preview'}.jpg`
+  const image = `${site}/assets/social/${isArticle ? `${selected === ayden ? 'ayden' : 'willva'}-article-en-v2` : '244-club-preview'}.jpg`
   const alt = isArticle ? `${article.en.title} — ${author}` : '244 Club, Angolan community in the UK'
   let html = template.replace(/<title>[\s\S]*?<\/title>/, `<title>${escape(page.title)}</title>`)
     .replace(/\s*<meta\b[^>]*(?:name="(?:description|robots|twitter:[^"]+)"|property="(?:og:[^"]+|article:[^"]+)")[^>]*>/g, '')

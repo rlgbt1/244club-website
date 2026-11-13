@@ -38,7 +38,7 @@ export default function Seo() {
     const isArticle = isAyden || pathname === willva.articlePath
     const story = article[lang]
     const page = isArticle ? { title: `${story.title} | Minds in Action — 244 Club`, description: story.subtitle } : pages[pathname] ?? pages['/']
-    const image = isArticle && !isAyden ? `${SITE_URL}/assets/social/willva-camera-preview.jpg` : DEFAULT_IMAGE
+    const image = isArticle ? `${SITE_URL}/assets/social/${isAyden ? 'ayden' : 'willva'}-article-${lang}-v2.jpg` : DEFAULT_IMAGE
     const url = `${SITE_URL}${pathname === '/' ? '/' : pathname + '/'}`
     document.title = page.title
 
