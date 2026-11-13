@@ -34,7 +34,7 @@ A custom-built presentation and sign-up website, designed and developed from scr
 
 | Page | Purpose |
 |---|---|
-| Home | Hero with orbital gallery, stats (150+ members, 40+ universities), events preview |
+| Home | Hero with orbital gallery, stats (200+ members, 40+ universities), events preview |
 | About | Story, mission, team, cultural context |
 | Events | Full event history, photo gallery with lightbox |
 | Join | Sign-up form, eligibility, contact |
