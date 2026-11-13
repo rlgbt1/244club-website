@@ -9,17 +9,21 @@ async function loadContent(path) {
   return import(`data:text/javascript;base64,${Buffer.from(outputText).toString('base64')}`)
 }
 const { pages } = await loadContent('../src/content/seo.ts')
-const { article, articlePath, author, publishedDate } = await loadContent('../src/content/willva.ts')
+const willva = await loadContent('../src/content/willva.ts')
+const ayden = await loadContent('../src/content/ayden.ts')
+const articles = [willva, ayden]
 const site = 'https://244club.com'
 const dist = resolve('dist')
 const template = await readFile(resolve(dist, 'index.html'), 'utf8')
 const escape = text => String(text).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]))
-const routes = { ...pages, [articlePath]: { title: `${article.en.title} | Minds in Action — 244 Club`, description: `${article.en.subtitle} Willva Iriana Alberto explores bias in camera technology and her AuraCam concept.` } }
+const routes = { ...pages, ...Object.fromEntries(articles.map(({ article, articlePath }) => [articlePath, { title: `${article.en.title} | Minds in Action — 244 Club`, description: article.en.subtitle }])) }
 
 for (const [path, page] of Object.entries(routes)) {
-  const isArticle = path === articlePath
+  const selected = articles.find(item => item.articlePath === path)
+  const isArticle = Boolean(selected)
+  const { article, author, publishedDate } = selected || willva
   const url = site + (path === '/' ? '/' : `${path}/`)
-  const image = `${site}/assets/social/${isArticle ? 'willva-camera-preview' : '244-club-preview'}.jpg`
+  const image = `${site}/assets/social/${selected === willva ? 'willva-camera-preview' : '244-club-preview'}.jpg`
   const alt = isArticle ? `${article.en.title} — ${author}` : '244 Club, Angolan community in the UK'
   let html = template.replace(/<title>[\s\S]*?<\/title>/, `<title>${escape(page.title)}</title>`)
     .replace(/\s*<meta\b[^>]*(?:name="(?:description|robots|twitter:[^"]+)"|property="(?:og:[^"]+|article:[^"]+)")[^>]*>/g, '')

@@ -4,6 +4,7 @@ import { useLang } from '../context/LanguageContext'
 import { article, articlePath, author, portrait, readingMinutes, publishedDate, publicationLabel } from '../content/willva'
 import { useT } from '../i18n'
 import { asset } from '../utils/asset'
+import * as ayden from '../content/ayden'
 
 export default function MindsInActionPage() {
   const t = useT()
@@ -12,6 +13,8 @@ export default function MindsInActionPage() {
   const story = article[lang]
   const [active, setActive] = useState(0)
   const showArticle = active === 0 || active === 2 || active === 5
+  const showAyden = active === 0 || active === 1 || active === 5
+  const latest = ayden.article[lang]
   const [expanded, setExpanded] = useState(false)
 
   return (
@@ -77,6 +80,23 @@ export default function MindsInActionPage() {
           ))}
         </div>
 
+        {showAyden && <>
+          <span className="mia-first-label">{lang === 'pt' ? 'O MAIS RECENTE' : 'THE LATEST'}</span>
+          <article className="mia-feature mia-feature-compact">
+            <div className="mia-feature-body">
+              <div className="mia-feature-meta"><span className="mia-feature-tag">{latest.category}</span><time dateTime={ayden.publishedDate}>{ayden.publicationLabel(lang)}</time></div>
+              <h2 className="mia-feature-title"><Link to={ayden.articlePath}>{latest.title}</Link></h2>
+              <p className="mia-feature-deck">{latest.subtitle}</p>
+            </div>
+            <div className="mia-feature-byline">
+              <Link to={ayden.articlePath} className="mia-feature-portrait" aria-label={`${m.featured.cta}: ${latest.title}`}>
+                <img src={asset(ayden.portrait)} alt={ayden.author} width="400" height="400" loading="lazy" />
+              </Link>
+              <div><p className="mia-feature-name">{ayden.author}</p><p className="mia-feature-university">{latest.bio}</p></div>
+            </div>
+            <div className="mia-feature-footer"><p className="mia-feature-read">{ayden.readingMinutes(lang)} {lang === 'pt' ? 'min de leitura' : 'min read'}</p><Link to={ayden.articlePath} className="mia-feature-cta">{m.featured.cta}</Link></div>
+          </article>
+        </>}
         {showArticle ? <>
         <span className="mia-first-label mia-anim mia-anim-6">{m.firstLabel}</span>
 
@@ -103,7 +123,7 @@ export default function MindsInActionPage() {
             <Link to={articlePath} className="mia-feature-cta">{m.featured.cta}</Link>
           </div>
         </article>
-        </> : <p className="mia-empty" role="status">{lang === 'pt' ? 'Novas perspetivas nesta categoria, em breve.' : 'New perspectives in this category, coming soon.'}</p>}
+        </> : !showAyden && <p className="mia-empty" role="status">{lang === 'pt' ? 'Novas perspetivas nesta categoria, em breve.' : 'New perspectives in this category, coming soon.'}</p>}
 
         <p className="mia-more-soon">{m.moreSoon}</p>
       </div>

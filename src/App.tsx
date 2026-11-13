@@ -34,6 +34,7 @@ export default function App() {
             <Route path="/join" element={<JoinPage />} />
             <Route path="/minds-in-action" element={<MindsInActionPage />} />
             <Route path="/minds-in-action/the-bias-isnt-in-you" element={<ArticlePage />} />
+            <Route path="/minds-in-action/africas-digital-revolution-is-outrunning" element={<ArticlePage />} />
           </Routes>
         </Suspense>
       </main>

@@ -1,11 +1,16 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
+import ReactMarkdown from 'react-markdown'
 import { useLang } from '../context/LanguageContext'
-import { article, author, portrait, readingMinutes, publishedDate, publicationLabel } from '../content/willva'
+import * as willva from '../content/willva'
+import * as ayden from '../content/ayden'
 import { asset } from '../utils/asset'
 
 export default function ArticlePage() {
   const { lang, setLang } = useLang()
+  const { pathname } = useLocation()
+  const isAyden = pathname.replace(/\/$/, '') === ayden.articlePath
+  const { article, author, portrait, readingMinutes, publishedDate, publicationLabel } = isAyden ? ayden : willva
   const story = article[lang]
   const pt = lang === 'pt'
   const [shareState, setShareState] = useState<'idle' | 'copied' | 'manual'>('idle')
@@ -37,7 +42,7 @@ export default function ArticlePage() {
       <article className="mia-story" lang={lang}>
         <header className="mia-story-header">
           <div className="mia-author-profile">
-            <img className="mia-avatar" src={asset(portrait)} alt={author} width="72" height="72" />
+            {portrait ? <img className="mia-avatar" src={asset(portrait)} alt={author} width="72" height="72" /> : <span className="mia-avatar" aria-hidden="true" style={{ display: 'grid', placeItems: 'center', background: '#e8eee6', color: '#23452c', fontWeight: 700 }}>AM</span>}
             <div>
               <p className="mia-author-name">{author}</p>
               <Link className="mia-handle" to="/minds-in-action">@MindsInAction</Link>
@@ -47,12 +52,12 @@ export default function ArticlePage() {
             <span>{story.category}</span><span aria-hidden="true">·</span>
             <time dateTime={publishedDate}>{publicationLabel(lang)}</time><span aria-hidden="true">·</span>
             <span>{readingMinutes(lang)} {pt ? 'min de leitura' : 'min read'}</span>
-            <span aria-hidden="true">·</span><span>{pt ? 'Artigo 01' : 'Article 01'}</span>
+            <span aria-hidden="true">·</span><span>{pt ? 'Artigo' : 'Article'} {isAyden ? '02' : '01'}</span>
           </div>
           <h1>{story.title}</h1>
           <p className="mia-story-subtitle">{story.subtitle}</p>
           <div className="mia-story-toolbar">
-            <p>{pt ? 'Traduzido do original em inglês.' : 'An original contribution to Minds in Action.'}</p>
+            <p>{isAyden ? <><span>{pt ? 'Publicado originalmente no ' : 'Originally published on '}</span><a href={ayden.sourceUrl} target="_blank" rel="noopener noreferrer">Substack</a>{pt && '. Traduzido do original em inglês.'}</> : (pt ? 'Traduzido do original em inglês.' : 'An original contribution to Minds in Action.')}</p>
             <button onClick={share} className="mia-share">
               <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 16V3m-5 5 5-5 5 5M5 13v7a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-7" /></svg>
               {pt ? 'Partilhar' : 'Share'}
@@ -75,12 +80,12 @@ export default function ArticlePage() {
             {story.sections.map(section => (
               <section id={section.id} key={section.id} aria-labelledby={`${section.id}-heading`}>
                 <h2 id={`${section.id}-heading`}>{section.title}</h2>
-                {section.paragraphs.map((paragraph, index) => <p key={index}>{paragraph}</p>)}
+                {section.paragraphs.map((paragraph, index) => isAyden ? <ReactMarkdown key={index}>{paragraph}</ReactMarkdown> : <p key={index}>{paragraph}</p>)}
               </section>
             ))}
             <footer className="mia-story-end">
               <div className="mia-author-profile">
-                <img className="mia-avatar" src={asset(portrait)} alt="" width="64" height="64" loading="lazy" />
+                {portrait ? <img className="mia-avatar" src={asset(portrait)} alt="" width="64" height="64" loading="lazy" /> : <span className="mia-avatar" aria-hidden="true" style={{ display: 'grid', placeItems: 'center', background: '#e8eee6', color: '#23452c', fontWeight: 700 }}>AM</span>}
                 <div><p className="mia-author-name">{author}</p><p className="mia-author-bio">{story.bio}</p><Link className="mia-handle" to="/minds-in-action">@MindsInAction</Link></div>
               </div>
               <Link className="mia-back" to="/minds-in-action">← {pt ? 'Voltar a Minds in Action' : 'Back to Minds in Action'}</Link>

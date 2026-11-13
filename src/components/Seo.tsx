@@ -2,7 +2,8 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import { useLang } from '../context/LanguageContext'
-import { article, articlePath, author, publishedDate } from '../content/willva'
+import * as willva from '../content/willva'
+import * as ayden from '../content/ayden'
 
 declare global {
   interface Window {
@@ -32,10 +33,12 @@ export default function Seo() {
   const { lang } = useLang()
 
   useEffect(() => {
-    const isArticle = pathname === articlePath
+    const isAyden = pathname === ayden.articlePath
+    const { article, author, publishedDate } = isAyden ? ayden : willva
+    const isArticle = isAyden || pathname === willva.articlePath
     const story = article[lang]
     const page = isArticle ? { title: `${story.title} | Minds in Action — 244 Club`, description: story.subtitle } : pages[pathname] ?? pages['/']
-    const image = isArticle ? `${SITE_URL}/assets/social/willva-camera-preview.jpg` : DEFAULT_IMAGE
+    const image = isArticle && !isAyden ? `${SITE_URL}/assets/social/willva-camera-preview.jpg` : DEFAULT_IMAGE
     const url = `${SITE_URL}${pathname === '/' ? '/' : pathname + '/'}`
     document.title = page.title
 
