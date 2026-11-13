@@ -7,7 +7,7 @@ const en = {
     heroSub: 'A curated society for Angolan students\nand young professionals in the UK.',
     cta1: 'Become a Member', cta2: 'Our Events',
     marquee: ['Culture','Community','Career','McKinsey × 244','SIP & Connect','Guest Talks','+244','Angola × UK','244 Club','AO × UK'],
-    statsNums: ['150+', '40+', '5+'],
+    statsNums: ['200+', '40+', '5+'],
     statsLabels: ['Members', 'UK Universities', 'Events hosted'],
     whatLabel: 'What is 244 Club?',
     whatH2pre: 'More than', whatH2mid: 'a', whatDialling: 'dialling', whatCode: 'code.',

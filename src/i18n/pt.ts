@@ -7,7 +7,7 @@ const pt = {
     heroSub: 'Uma comunidade para estudantes e jovens\nprofissionais angolanos no Reino Unido.',
     cta1: 'Tornar-se Membro', cta2: 'Os Nossos Eventos',
     marquee: ['Cultura','Comunidade','Carreira','McKinsey × 244','SIP & Connect','Guest Talks','+244','Angola × UK','244 Club','AO × UK'],
-    statsNums: ['150+', '40+', '5+'],
+    statsNums: ['200+', '40+', '5+'],
     statsLabels: ['Membros', 'Universidades em UK', 'Eventos realizados'],
     whatLabel: 'O que é o 244 Club?',
     whatH2pre: 'Mais do que', whatH2mid: 'um', whatDialling: 'indicativo', whatCode: 'telefónico.',
